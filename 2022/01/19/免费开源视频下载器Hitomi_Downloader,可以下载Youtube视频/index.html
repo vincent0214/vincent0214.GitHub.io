@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Vincent Zhu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="是什么 Hitomi Downloader 是一款基於 yt-dlp(基於 youtube-dl)的在線視頻下載工具，也繼承了 1200+ 在線視頻網站的解析支持，擁有簡潔的圖形界面，即開即用。甚至還支持 M3U8、BT 種子和磁力鏈接，簡直很厲害。  官方网站https:&#x2F;&#x2F;github.com&#x2F;KurtBestor&#x2F;Hitomi-Downloader 下载地址https:&#x2F;&#x2F;github.co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="免费开源视频下载器Hitomi Downloader,可以下载Youtube视频">
+<meta property="og:url" content="https://blog.wingogo.tk/2022/01/19/%E5%85%8D%E8%B4%B9%E5%BC%80%E6%BA%90%E8%A7%86%E9%A2%91%E4%B8%8B%E8%BD%BD%E5%99%A8Hitomi_Downloader,%E5%8F%AF%E4%BB%A5%E4%B8%8B%E8%BD%BDYoutube%E8%A7%86%E9%A2%91/index.html">
+<meta property="og:site_name" content="夏日雪糕">
+<meta property="og:description" content="是什么 Hitomi Downloader 是一款基於 yt-dlp(基於 youtube-dl)的在線視頻下載工具，也繼承了 1200+ 在線視頻網站的解析支持，擁有簡潔的圖形界面，即開即用。甚至還支持 M3U8、BT 種子和磁力鏈接，簡直很厲害。  官方网站https:&#x2F;&#x2F;github.com&#x2F;KurtBestor&#x2F;Hitomi-Downloader 下载地址https:&#x2F;&#x2F;github.co">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20220119095154.png">
+<meta property="article:published_time" content="2022-01-19T01:45:00.000Z">
+<meta property="article:modified_time" content="2022-02-22T07:41:33.400Z">
+<meta property="article:author" content="Vincent Zhu">
+<meta property="article:tag" content="下载工具">
+<meta property="article:tag" content="Youtube">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20220119095154.png">
+  
+  
+  <title>免费开源视频下载器Hitomi Downloader,可以下载Youtube视频 - 夏日雪糕</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/scrollbar.css">
+<link rel="stylesheet" href="/css/customer.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.wingogo.tk","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>夏日雪条</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/castle-6885449_1920.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="免费开源视频下载器Hitomi Downloader,可以下载Youtube视频">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-19 09:45" pubdate>
+        2022年1月19日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">免费开源视频下载器Hitomi Downloader,可以下载Youtube视频</h1>
+            
+            <div class="markdown-body">
+              <h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><blockquote>
+<p><strong>Hitomi Downloader</strong> 是一款基於 <a target="_blank" rel="noopener" href="https://www.freedidi.com/go.php?url=aHR0cHM6Ly9naXRodWIuY29tL3l0LWRscC95dC1kbHA=">yt-dlp</a>(基於 <a target="_blank" rel="noopener" href="https://www.freedidi.com/go.php?url=aHR0cHM6Ly9naXRodWIuY29tL3l0ZGwtb3JnL3lvdXR1YmUtZGw=">youtube-dl</a>)的在線視頻下載工具，也繼承了 1200+ 在線視頻網站的解析支持，擁有簡潔的圖形界面，即開即用。甚至還支持 M3U8、BT 種子和磁力鏈接，簡直很厲害。</p>
+</blockquote>
+<h2 id="官方网站"><a href="#官方网站" class="headerlink" title="官方网站"></a>官方网站</h2><p><a target="_blank" rel="noopener" href="https://github.com/KurtBestor/Hitomi-Downloader">https://github.com/KurtBestor/Hitomi-Downloader</a></p>
+<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p><a target="_blank" rel="noopener" href="https://github.com/KurtBestor/Hitomi-Downloader/releases">https://github.com/KurtBestor/Hitomi-Downloader/releases</a></p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20220119095154.png" srcset="/img/loading.gif" lazyload alt="Snipaste_2022-01-19_09-50-33"></p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>🍰 Simple and clear user interface</li>
+<li>🚀 Download acceleration</li>
+<li>💻 Supports 32 threads in a single task</li>
+<li>🚥 Supports speed limit</li>
+<li>📜 Supports user scripts</li>
+<li>🧲 Supports BitTorrent &amp; Magnet</li>
+<li>🎞️ Supports M3U8 &amp; MPD format videos</li>
+<li>🌙 Dark mode</li>
+<li>🧳 Portable</li>
+<li>📋 Clipboard monitor</li>
+<li>🗃️ Easy to organize tasks</li>
+</ul>
+<h2 id="支持网站"><a href="#支持网站" class="headerlink" title="支持网站"></a>支持网站</h2><table>
+<thead>
+<tr>
+<th>Site</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AfreecaTV</td>
+<td><a target="_blank" rel="noopener" href="https://afreecatv.com/">https://afreecatv.com</a></td>
+</tr>
+<tr>
+<td>ArtStation</td>
+<td><a target="_blank" rel="noopener" href="https://artstation.com/">https://artstation.com</a></td>
+</tr>
+<tr>
+<td>AsianSister</td>
+<td><a target="_blank" rel="noopener" href="https://asiansister.com/">https://asiansister.com</a></td>
+</tr>
+<tr>
+<td>AsmHentai</td>
+<td><a target="_blank" rel="noopener" href="https://asmhentai.com/">https://asmhentai.com</a></td>
+</tr>
+<tr>
+<td>Avgle</td>
+<td><a target="_blank" rel="noopener" href="https://avgle.com/">https://avgle.com</a></td>
+</tr>
+<tr>
+<td>baraag.net</td>
+<td><a target="_blank" rel="noopener" href="https://baraag.net/">https://baraag.net</a></td>
+</tr>
+<tr>
+<td>半次元</td>
+<td><a target="_blank" rel="noopener" href="https://bcy.net/">https://bcy.net</a></td>
+</tr>
+<tr>
+<td>BDSMlr</td>
+<td><a target="_blank" rel="noopener" href="https://bdsmlr.com/">https://bdsmlr.com</a></td>
+</tr>
+<tr>
+<td>bilibili</td>
+<td><a target="_blank" rel="noopener" href="https://bilibili.com/">https://bilibili.com</a></td>
+</tr>
+<tr>
+<td>ComicWalker</td>
+<td><a target="_blank" rel="noopener" href="https://comic-walker.com/">https://comic-walker.com</a></td>
+</tr>
+<tr>
+<td>Coub</td>
+<td><a target="_blank" rel="noopener" href="https://coub.com/">https://coub.com</a></td>
+</tr>
+<tr>
+<td>Danbooru</td>
+<td><a target="_blank" rel="noopener" href="https://danbooru.donmai.us/">https://danbooru.donmai.us</a></td>
+</tr>
+<tr>
+<td>Kakao Webtoon</td>
+<td><a target="_blank" rel="noopener" href="http://webtoon.kakao.com/">http://webtoon.kakao.com</a></td>
+</tr>
+<tr>
+<td>DeviantArt</td>
+<td><a target="_blank" rel="noopener" href="https://deviantart.com/">https://deviantart.com</a></td>
+</tr>
+<tr>
+<td>E(x)Hentai Galleries</td>
+<td><a target="_blank" rel="noopener" href="https://e-hentai.org/">https://e-hentai.org</a><br /><a target="_blank" rel="noopener" href="https://exhentai.org/">https://exhentai.org</a></td>
+</tr>
+<tr>
+<td>Facebook</td>
+<td><a target="_blank" rel="noopener" href="https://facebook.com/">https://facebook.com</a></td>
+</tr>
+<tr>
+<td>FC2 Video</td>
+<td><a target="_blank" rel="noopener" href="https://video.fc2.com/">https://video.fc2.com</a></td>
+</tr>
+<tr>
+<td>Flickr</td>
+<td><a target="_blank" rel="noopener" href="https://flickr.com/">https://flickr.com</a></td>
+</tr>
+<tr>
+<td>Gelbooru</td>
+<td><a target="_blank" rel="noopener" href="https://gelbooru.com/">https://gelbooru.com</a></td>
+</tr>
+<tr>
+<td>Hameln</td>
+<td><a target="_blank" rel="noopener" href="https://syosetu.org/">https://syosetu.org</a></td>
+</tr>
+<tr>
+<td>hanime.tv</td>
+<td><a target="_blank" rel="noopener" href="https://hanime.tv/">https://hanime.tv</a></td>
+</tr>
+<tr>
+<td>Hentai Foundry</td>
+<td><a target="_blank" rel="noopener" href="https://hentai-foundry.com/">https://hentai-foundry.com</a></td>
+</tr>
+<tr>
+<td>Hitomi.la</td>
+<td><a target="_blank" rel="noopener" href="https://hitomi.la/">https://hitomi.la</a></td>
+</tr>
+<tr>
+<td>Hiyobi.me</td>
+<td><a target="_blank" rel="noopener" href="https://hiyobi.me/">https://hiyobi.me</a></td>
+</tr>
+<tr>
+<td>Imgur</td>
+<td><a target="_blank" rel="noopener" href="https://imgur.com/">https://imgur.com</a></td>
+</tr>
+<tr>
+<td>Instagram</td>
+<td><a target="_blank" rel="noopener" href="https://instagram.com/">https://instagram.com</a></td>
+</tr>
+<tr>
+<td>Iwara</td>
+<td><a target="_blank" rel="noopener" href="https://iwara.tv/">https://iwara.tv</a><br /><a target="_blank" rel="noopener" href="https://ecchi.iwara.tv/">https://ecchi.iwara.tv</a></td>
+</tr>
+<tr>
+<td>Jmana</td>
+<td><a target="_blank" rel="noopener" href="https://jmana.net/">https://jmana.net</a></td>
+</tr>
+<tr>
+<td>カクヨム</td>
+<td><a target="_blank" rel="noopener" href="https://kakuyomu.jp/">https://kakuyomu.jp</a></td>
+</tr>
+<tr>
+<td>LHScan</td>
+<td><a target="_blank" rel="noopener" href="https://loveheaven.net/">https://loveheaven.net</a></td>
+</tr>
+<tr>
+<td>Likee</td>
+<td><a target="_blank" rel="noopener" href="https://likee.video/">https://likee.video</a></td>
+</tr>
+<tr>
+<td>Luscious</td>
+<td><a target="_blank" rel="noopener" href="https://luscious.net/">https://luscious.net</a></td>
+</tr>
+<tr>
+<td>MyReadingManga</td>
+<td><a target="_blank" rel="noopener" href="https://myreadingmanga.info/">https://myreadingmanga.info</a></td>
+</tr>
+<tr>
+<td>Naver Blog</td>
+<td><a target="_blank" rel="noopener" href="https://blog.naver.com/">https://blog.naver.com</a></td>
+</tr>
+<tr>
+<td>Naver Post</td>
+<td><a target="_blank" rel="noopener" href="https://post.naver.com/">https://post.naver.com</a></td>
+</tr>
+<tr>
+<td>Naver Webtoon</td>
+<td><a target="_blank" rel="noopener" href="https://comic.naver.com/">https://comic.naver.com</a></td>
+</tr>
+<tr>
+<td>Naver TV</td>
+<td><a target="_blank" rel="noopener" href="https://tv.naver.com/">https://tv.naver.com</a></td>
+</tr>
+<tr>
+<td>nhentai</td>
+<td><a target="_blank" rel="noopener" href="https://nhentai.net/">https://nhentai.net</a></td>
+</tr>
+<tr>
+<td>nhentai.com</td>
+<td><a target="_blank" rel="noopener" href="https://nhentai.com/">https://nhentai.com</a></td>
+</tr>
+<tr>
+<td>Niconico</td>
+<td><a target="_blank" rel="noopener" href="http://nicovideo.jp/">http://nicovideo.jp</a></td>
+</tr>
+<tr>
+<td>ニジエ</td>
+<td><a target="_blank" rel="noopener" href="https://nijie.info/">https://nijie.info</a></td>
+</tr>
+<tr>
+<td>Pawoo</td>
+<td><a target="_blank" rel="noopener" href="https://pawoo.net/">https://pawoo.net</a></td>
+</tr>
+<tr>
+<td>Pinterest</td>
+<td><a target="_blank" rel="noopener" href="https://pinterest.com/">https://pinterest.com</a></td>
+</tr>
+<tr>
+<td>Pixiv</td>
+<td><a target="_blank" rel="noopener" href="https://pixiv.net/">https://pixiv.net</a></td>
+</tr>
+<tr>
+<td>pixivコミック</td>
+<td><a target="_blank" rel="noopener" href="https://comic.pixiv.net/">https://comic.pixiv.net</a></td>
+</tr>
+<tr>
+<td>Pornhub</td>
+<td><a target="_blank" rel="noopener" href="https://pornhub.com/">https://pornhub.com</a><br /><a target="_blank" rel="noopener" href="https://pornhubpremium.com/">https://pornhubpremium.com</a></td>
+</tr>
+<tr>
+<td>Rule34.xxx</td>
+<td><a target="_blank" rel="noopener" href="https://rule34.xxx/">https://rule34.xxx</a></td>
+</tr>
+<tr>
+<td>Sankaku Complex</td>
+<td><a target="_blank" rel="noopener" href="https://www.sankakucomplex.com/">https://www.sankakucomplex.com</a><br/><a target="_blank" rel="noopener" href="https://chan.sankakucomplex.com/">https://chan.sankakucomplex.com</a><br/><a target="_blank" rel="noopener" href="https://idol.sankakucomplex.com/">https://idol.sankakucomplex.com</a></td>
+</tr>
+<tr>
+<td>Soundcloud</td>
+<td><a target="_blank" rel="noopener" href="https://soundcloud.com/">https://soundcloud.com</a></td>
+</tr>
+<tr>
+<td>小説家になろう</td>
+<td><a target="_blank" rel="noopener" href="https://syosetu.com/">https://syosetu.com</a></td>
+</tr>
+<tr>
+<td>TOKYO Motion</td>
+<td><a target="_blank" rel="noopener" href="https://tokyomotion.net/">https://tokyomotion.net</a></td>
+</tr>
+<tr>
+<td>Tumblr</td>
+<td><a target="_blank" rel="noopener" href="https://tumblr.com/">https://tumblr.com</a></td>
+</tr>
+<tr>
+<td>Twitch</td>
+<td><a target="_blank" rel="noopener" href="https://twitch.tv/">https://twitch.tv</a></td>
+</tr>
+<tr>
+<td>Twitter</td>
+<td><a target="_blank" rel="noopener" href="https://twitter.com/">https://twitter.com</a></td>
+</tr>
+<tr>
+<td>Vimeo</td>
+<td><a target="_blank" rel="noopener" href="https://vimeo.com/">https://vimeo.com</a></td>
+</tr>
+<tr>
+<td>V LIVE</td>
+<td><a target="_blank" rel="noopener" href="https://vlive.tv/">https://vlive.tv</a></td>
+</tr>
+<tr>
+<td>Weibo</td>
+<td><a target="_blank" rel="noopener" href="https://weibo.com/">https://weibo.com</a></td>
+</tr>
+<tr>
+<td>WikiArt</td>
+<td><a target="_blank" rel="noopener" href="https://www.wikiart.org/">https://www.wikiart.org</a></td>
+</tr>
+<tr>
+<td>xHamster</td>
+<td><a target="_blank" rel="noopener" href="https://xhamster.com/">https://xhamster.com</a></td>
+</tr>
+<tr>
+<td>XNXX</td>
+<td><a target="_blank" rel="noopener" href="https://xnxx.com/">https://xnxx.com</a></td>
+</tr>
+<tr>
+<td>XVideos</td>
+<td><a target="_blank" rel="noopener" href="https://xvideos.com/">https://xvideos.com</a></td>
+</tr>
+<tr>
+<td>Yande.re</td>
+<td><a target="_blank" rel="noopener" href="https://yande.re/">https://yande.re</a></td>
+</tr>
+<tr>
+<td>Youku</td>
+<td><a target="_blank" rel="noopener" href="https://youku.com/">https://youku.com</a></td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td><a target="_blank" rel="noopener" href="https://youtube.com/">https://youtube.com</a></td>
+</tr>
+<tr>
+<td>and more…</td>
+<td><a target="_blank" rel="noopener" href="http://ytdl-org.github.io/youtube-dl/supportedsites.html">Supported sites by youtube-dl</a></td>
+</tr>
+</tbody></table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/">下载工具</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Youtube/">Youtube</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/14/%E8%A7%86%E9%A2%91%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E5%AD%97%E5%B9%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">快速生成视频字幕和修改字幕的软件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/31/Git%E6%96%87%E4%BB%B6%E6%80%8E%E4%B9%88%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9/">
+                        <span class="hidden-mobile">Git文件怎么撤销修改</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/peipei_blog/20220131195431.jpg" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" >
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

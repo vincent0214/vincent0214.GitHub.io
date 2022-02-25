@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Vincent Zhu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="安装adb和fastboot下载地址 设置环境变量  确保你的电脑已经配置好adb 和fastboot 的环境变量.  原文: https:&#x2F;&#x2F;wiki.lineageos.org&#x2F;adb_fastboot_guide.html   解锁手机下载解锁工具 http:&#x2F;&#x2F;www.miui.com&#x2F;unlock&#x2F;index.html   开启开发者选项「设置」-&gt; 「全部参数」-&gt; 连续点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="红米7刷LineageOS系统">
+<meta property="og:url" content="https://blog.wingogo.tk/2021/07/02/%E7%BA%A2%E7%B1%B37%E5%88%B7LineageOS%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="夏日雪糕">
+<meta property="og:description" content="安装adb和fastboot下载地址 设置环境变量  确保你的电脑已经配置好adb 和fastboot 的环境变量.  原文: https:&#x2F;&#x2F;wiki.lineageos.org&#x2F;adb_fastboot_guide.html   解锁手机下载解锁工具 http:&#x2F;&#x2F;www.miui.com&#x2F;unlock&#x2F;index.html   开启开发者选项「设置」-&gt; 「全部参数」-&gt; 连续点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png">
+<meta property="article:published_time" content="2021-07-02T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-22T07:41:33.401Z">
+<meta property="article:author" content="Vincent Zhu">
+<meta property="article:tag" content="手机刷ROM">
+<meta property="article:tag" content="红米手机">
+<meta property="article:tag" content="小米手机">
+<meta property="article:tag" content="红米7">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png">
+  
+  
+  <title>红米7刷LineageOS系统 - 夏日雪糕</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/scrollbar.css">
+<link rel="stylesheet" href="/css/customer.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.wingogo.tk","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>夏日雪条</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="红米7刷LineageOS系统">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-02 18:00" pubdate>
+        2021年7月2日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      989 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">红米7刷LineageOS系统</h1>
+            
+            <div class="markdown-body">
+              <h2 id="安装adb和fastboot"><a href="#安装adb和fastboot" class="headerlink" title="安装adb和fastboot"></a>安装adb和fastboot</h2><p><a target="_blank" rel="noopener" href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">下载地址</a></p>
+<p>设置环境变量</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181052.png" srcset="/img/loading.gif" lazyload alt="image-20210702180557233"></p>
+<p>确保你的电脑已经配置好<code>adb</code> 和<code>fastboot</code> 的环境变量.</p>
+<blockquote>
+<p>原文: <a target="_blank" rel="noopener" href="https://wiki.lineageos.org/adb_fastboot_guide.html">https://wiki.lineageos.org/adb_fastboot_guide.html</a></p>
+</blockquote>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181056.png" srcset="/img/loading.gif" lazyload alt="Image2"></p>
+<h2 id="解锁手机"><a href="#解锁手机" class="headerlink" title="解锁手机"></a>解锁手机</h2><h3 id="下载解锁工具"><a href="#下载解锁工具" class="headerlink" title="下载解锁工具"></a>下载解锁工具</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.miui.com/unlock/index.html">http://www.miui.com/unlock/index.html</a></p>
+</blockquote>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181058.png" srcset="/img/loading.gif" lazyload alt="Image3"></p>
+<h3 id="开启开发者选项"><a href="#开启开发者选项" class="headerlink" title="开启开发者选项"></a>开启开发者选项</h3><p><code>「设置」</code>-&gt; <code>「全部参数」</code>-&gt; 连续点击<code>「MIUI 版本」</code>（直至开启开发者选项即可）</p>
+<h3 id="设备绑定小米账号"><a href="#设备绑定小米账号" class="headerlink" title="设备绑定小米账号"></a>设备绑定小米账号</h3><p><code>「设置」</code>-&gt;<code>「更多设置」</code> -&gt;<code>「开发者选项」</code> -&gt;<code>「设备解锁状态」</code>（登录小米账号）</p>
+<h3 id="开启USB调试"><a href="#开启USB调试" class="headerlink" title="开启USB调试"></a>开启USB调试</h3><p><code>「设置」</code>-&gt;<code>「更多设置」</code>-&gt;<code>「开发者选项」</code>-&gt;<code>「USB调试」</code>（开启即可）。</p>
+<h3 id="使手机进入-fastboot-模式"><a href="#使手机进入-fastboot-模式" class="headerlink" title="使手机进入  fastboot 模式"></a>使手机进入  fastboot 模式</h3><p><strong>方法1</strong>, 电脑打开 <code>cmd（命令提示符）</code>，执行下列命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">adb reboot bootloader<br></code></pre></td></tr></table></figure>
+
+<p><strong>方法2,</strong> 手机关机, 然后同时长按<code>音量减</code> 和  <code>电源</code>进入模式 </p>
+<h3 id="在电脑里，运行小米官方解锁工具"><a href="#在电脑里，运行小米官方解锁工具" class="headerlink" title="在电脑里，运行小米官方解锁工具"></a>在电脑里，运行小米官方解锁工具</h3><p>解压完后，文件夹里找到 <strong>miflash_unlock.exe</strong>，双击运行即可。登录账号依照提示完成解锁即可。</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181102.png" srcset="/img/loading.gif" lazyload alt="Image4"></p>
+<h2 id="刷ROM"><a href="#刷ROM" class="headerlink" title="刷ROM"></a>刷ROM</h2><blockquote>
+<p>官网原文: <a target="_blank" rel="noopener" href="https://wiki.lineageos.org/devices/onclite/install">https://wiki.lineageos.org/devices/onclite/install</a></p>
+</blockquote>
+<h3 id="1-下载这两个东西"><a href="#1-下载这两个东西" class="headerlink" title="1. 下载这两个东西"></a>1. 下载这两个东西</h3><blockquote>
+<p>下载地址 <a target="_blank" rel="noopener" href="https://download.lineageos.org/onclite">https://download.lineageos.org/onclite</a></p>
+</blockquote>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181112.png" srcset="/img/loading.gif" lazyload alt="Image5"></p>
+<h3 id="2-手机开启USB调试"><a href="#2-手机开启USB调试" class="headerlink" title="2. 手机开启USB调试"></a>2. 手机开启USB调试</h3><p><code>「设置」</code>-&gt; <code>「全部参数」</code>-&gt; 连续点击<code>「MIUI 版本」</code>（直至开启开发者选项即可）</p>
+<p><code>「设置」</code>-&gt;<code>「更多设置」</code>-&gt;<code>「开发者选项」</code>-&gt;<code>「USB调试」</code>（开启即可）。</p>
+<h3 id="3-USB数据线连接手机和电脑"><a href="#3-USB数据线连接手机和电脑" class="headerlink" title="3. USB数据线连接手机和电脑"></a>3. USB数据线连接手机和电脑</h3><h3 id="4-电脑执行命令"><a href="#4-电脑执行命令" class="headerlink" title="4. 电脑执行命令"></a>4. 电脑执行命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb reboot bootloader<br></code></pre></td></tr></table></figure>
+
+<p>一旦手机处于快速启动模式，请通过键入以下内容<code>验证您的PC是否找到它</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">fastboot devices<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-闪存恢复到您的设备"><a href="#5-闪存恢复到您的设备" class="headerlink" title="5. 闪存恢复到您的设备"></a>5. 闪存恢复到您的设备</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181116.png" srcset="/img/loading.gif" lazyload alt="Image6"></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">fastboot</span> flash recovery  xxxxx.img    <br></code></pre></td></tr></table></figure>
+
+<h3 id="6-断开数据线-手机同时按音量-和电源建-有点难进入-要尝试多次"><a href="#6-断开数据线-手机同时按音量-和电源建-有点难进入-要尝试多次" class="headerlink" title="6. 断开数据线, 手机同时按音量+和电源建 (有点难进入,要尝试多次)"></a>6. 断开数据线, 手机同时按<strong>音量+<strong>和</strong>电源建</strong> (有点难进入,要尝试多次)</h3><p>成功的话, 如图所示</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181119.png" srcset="/img/loading.gif" lazyload alt="Image7"></p>
+<h3 id="7-清除数据"><a href="#7-清除数据" class="headerlink" title="7 清除数据"></a>7 清除数据</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181122.png" srcset="/img/loading.gif" lazyload alt="Image9"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181124.png" srcset="/img/loading.gif" lazyload alt="Image8"></p>
+<h3 id="8-插入数据线-刷ROM"><a href="#8-插入数据线-刷ROM" class="headerlink" title="8. 插入数据线, 刷ROM"></a>8. 插入数据线, 刷ROM</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181127.png" srcset="/img/loading.gif" lazyload alt="Image10"></p>
+<p>选择<code>Apply from ADB</code></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181129.png" srcset="/img/loading.gif" lazyload alt="Image11"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181131.png" srcset="/img/loading.gif" lazyload alt="Image12"></p>
+<p>电脑执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb sideload lineage-18.1-20210613-nightly-onclite-signed.zip   <br></code></pre></td></tr></table></figure>
+
+<h3 id="9-完成"><a href="#9-完成" class="headerlink" title="9 完成"></a>9 完成</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181134.png" srcset="/img/loading.gif" lazyload alt="Image13"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181137.png" srcset="/img/loading.gif" lazyload alt="Image14"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181139.png" srcset="/img/loading.gif" lazyload alt="Image15"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181141.png" srcset="/img/loading.gif" lazyload alt="Image16"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://ericclose.github.io/Install-LineageOS-on-sagit.html">2020年 小米6 刷机 LineageOS 17.1 Official</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%89%8B%E6%9C%BA/">手机</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%89%8B%E6%9C%BA%E5%88%B7ROM/">手机刷ROM</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BA%A2%E7%B1%B3%E6%89%8B%E6%9C%BA/">红米手机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA/">小米手机</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BA%A2%E7%B1%B37/">红米7</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/06/%E6%8E%A8%E8%8D%90%E4%B8%A4%E6%AC%BE%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">推荐两款虚拟机软件</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/02/%E6%95%99%E4%BD%A0%E7%94%A8Hexo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+                        <span class="hidden-mobile">教你用Hexo创建个人博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/peipei_blog/20220131195431.jpg" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" >
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
