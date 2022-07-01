@@ -322,7 +322,7 @@
 <h3 id="转换文件"><a href="#转换文件" class="headerlink" title="转换文件"></a>转换文件</h3><blockquote>
 <p>以下命令在CMD里面执行<br>确定已经安装ffmpeg, 并把ffmpeg加入到环境变量</p>
 </blockquote>
-<h4 id="转换多个文件"><a href="#转换多个文件" class="headerlink" title="转换多个文件"></a>转换多个文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> %i <span class="hljs-keyword">in</span> (*.flv) <span class="hljs-keyword">do</span> ffmpeg -i <span class="hljs-string">&quot;%i&quot;</span> -c copy <span class="hljs-string">&quot;%~ni.mp4&quot;</span><br></code></pre></td></tr></table></figure>
+<h4 id="转换多个文件"><a href="#转换多个文件" class="headerlink" title="转换多个文件"></a>转换多个文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> %i <span class="hljs-keyword">in</span> (*.flv) <span class="hljs-keyword">do</span> ffmpeg -i <span class="hljs-string">&quot;%i&quot;</span> -c copy <span class="hljs-string">&quot;%~ni.mp4&quot;</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="转换单个文件"><a href="#转换单个文件" class="headerlink" title="转换单个文件"></a>转换单个文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i <span class="hljs-string">&quot;input.flv&quot;</span> -c copy <span class="hljs-string">&quot;output.mp4&quot;</span><br></code></pre></td></tr></table></figure>
 
