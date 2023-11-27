@@ -1,0 +1,13 @@
+code {
+  color: #e83e8c;
+}
+
+.markdown-body code {
+  padding: .1em .4em;
+  font-size: 93%;
+}
+
+
+.banner .mask {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}

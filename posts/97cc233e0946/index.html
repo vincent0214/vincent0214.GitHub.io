@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="夏日雪糕">
+  <meta name="keywords" content="海克斯科技,wingogo">
+  
+    <meta name="description" content="前言交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等. 本文安装git图形工具SourceTree. 以图形界面方式能更好地查看commit节点情况 本文中说到”压缩提交”和”合并提交”是同一个意思 ⚠️注意最好不要在主分支(例如:master)使用交互式rebase操作提交记录.  因为交互式rebase操作会令参与操作的提交节点和之后的所有提交节点的提交id(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交互式git rebase压缩提交记录,合并提交记录">
+<meta property="og:url" content="https://blog.wingogo.top/posts/97cc233e0946/index.html">
+<meta property="og:site_name" content="夏日雪糕">
+<meta property="og:description" content="前言交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等. 本文安装git图形工具SourceTree. 以图形界面方式能更好地查看commit节点情况 本文中说到”压缩提交”和”合并提交”是同一个意思 ⚠️注意最好不要在主分支(例如:master)使用交互式rebase操作提交记录.  因为交互式rebase操作会令参与操作的提交节点和之后的所有提交节点的提交id(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp">
+<meta property="article:published_time" content="2023-08-24T10:55:00.000Z">
+<meta property="article:modified_time" content="2023-09-21T05:20:49.095Z">
+<meta property="article:author" content="夏日雪糕">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Git rebase">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>交互式git rebase压缩提交记录,合并提交记录 - 夏日雪糕</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/scrollbar.css">
+<link rel="stylesheet" href="/css/customer.css">
+<link rel="stylesheet" href="/css/mac.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.wingogo.top","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>夏日雪糕</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="交互式git rebase压缩提交记录,合并提交记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-24 18:55" pubdate>
+          2023年8月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">交互式git rebase压缩提交记录,合并提交记录</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等.</p>
+<p>本文安装git图形工具<code>SourceTree</code>. 以图形界面方式能更好地查看<code>commit节点</code>情况</p>
+<p>本文中说到”压缩提交”和”合并提交”是同一个意思</p>
+<h3 id="⚠️注意"><a href="#⚠️注意" class="headerlink" title="⚠️注意"></a>⚠️注意</h3><p><strong>最好不要在主分支(例如:master)使用交互式rebase操作提交记录.</strong> </p>
+<p><strong>因为交互式rebase操作会令<code>参与操作的提交节点</code>和<code>之后的所有提交节点</code>的提交id(commit-hash)会发生变化.</strong></p>
+<h2 id="方式1-使用命令压缩提交"><a href="#方式1-使用命令压缩提交" class="headerlink" title="方式1: 使用命令压缩提交"></a>方式1: 使用命令压缩提交</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase -i [commit-hash]<br></code></pre></td></tr></table></figure>
+
+<p>动画例子: <code>git rebase -i i8fe5</code> 管理<code>i8fe5</code> 之后的提交节点</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185136.webp" srcset="/img/loading.gif" lazyload></p>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>用<code>SourceTree</code>打开项目可以看到, 分支上有6个提交记录, v1 — v6</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185132.png" srcset="/img/loading.gif" lazyload></p>
+<p>目标: 压缩v1之后的提交到v2, 即: 合并(v3, v4, v5, v6) —&gt; v2</p>
+<h3 id="1-找出基点提交id-commit-hash"><a href="#1-找出基点提交id-commit-hash" class="headerlink" title="1. 找出基点提交id(commit-hash)."></a>1. <strong>找出基点提交id(commit-hash).</strong></h3><p>基点: 变基rebase参考点, 参考点可以理解为”地基”.只作为参照,不参与操作</p>
+<p>案例中v1就是基点, 所以<strong>要找到v1的提交id</strong></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185142.png" srcset="/img/loading.gif" lazyload alt="基点"></p>
+<p>通过<code>SourceTree</code>或<code>git log</code>, 找到v1的提交id</p>
+<p><strong>v1提交id为: <code>b6919c7</code></strong></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185147.png" srcset="/img/loading.gif" lazyload alt="v1提交id"></p>
+<h3 id="2-执行交互式git-rebase命令"><a href="#2-执行交互式git-rebase命令" class="headerlink" title="2. 执行交互式git rebase命令"></a>2. 执行交互式git rebase命令</h3><p>找到v1的提交id(<code>b6919c7</code>)后, 可以执行命令管理v1之后的提交节点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase -i b6919c7 <br></code></pre></td></tr></table></figure>
+
+<p>执行命令后显示</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185149.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中<strong>pick</strong>, <strong>squash</strong>, <strong>fixup</strong>这3个操作与压缩提交有关</p>
+<ul>
+<li><code>pick</code>: 使用提交</li>
+<li><code>squash</code> : 将提交融合到前一个提交中；</li>
+<li><code>fixup</code>: 将提交融合到前一个提交中，不保留该提交的日志消息；</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">p, pick &lt;commit&gt; = use commit<br>r, reword &lt;commit&gt; = use commit, but edit the commit message<br>e, edit &lt;commit&gt; = use commit, but stop for amending<br>s, squash &lt;commit&gt; = use commit, but meld into previous commit<br>f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit&#x27;s log message<br>x, exec &lt;command&gt; = run command (the rest of the line) using shell<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824191649.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-修改git-rebase的交互文本压缩提交"><a href="#3-修改git-rebase的交互文本压缩提交" class="headerlink" title="3. 修改git rebase的交互文本压缩提交"></a>3. 修改git rebase的交互文本压缩提交</h3><p>压缩(v3,v4,v5,v6) —&gt; v2 , </p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs txt">pick d9ca07c v2<br>f 3f83f0a v3<br>f ab92fa4 v4<br>f abcde39 v5<br>f 0034515 v6<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185152.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><code>f, fixup</code>: 将提交融合到前一个提交中，不保留该提交的日志消息；</li>
+<li><code>pick</code>: 使用提交</li>
+</ul>
+<p>确认编辑完成后, “:wq”保存退出</p>
+<h3 id="4-效果"><a href="#4-效果" class="headerlink" title="4. 效果"></a>4. 效果</h3><p>(v3, v4, v5, v6) 合并到 v2 </p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185156.png" srcset="/img/loading.gif" lazyload alt="合并后"></p>
+<p><strong>图中的v2是一个全新的提交节点</strong>, 提交id和之前的v2是不同的. 只是提交信息和之前的v2相同而已</p>
+<h2 id="方式2-使用图形界面压缩提交"><a href="#方式2-使用图形界面压缩提交" class="headerlink" title="方式2: 使用图形界面压缩提交"></a>方式2: 使用图形界面压缩提交</h2><p>图形界面软件: <a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">SourceTree</a></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185158.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185200.png" srcset="/img/loading.gif" lazyload></p>
+<p>依次操作</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185202.png" srcset="/img/loading.gif" lazyload></p>
+<p>按钮“<strong>用此前的squash</strong>”  可以理解为讲选择的提交记<code>v6</code>录合并到上一个提交记录<code>v5</code></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230828140905.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185204.png" srcset="/img/loading.gif" lazyload></p>
+<p>之后依次把v3,v4,v5,v6合并</p>
+<p>确定操作,点击”确认”.</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185206.png" srcset="/img/loading.gif" lazyload></p>
+<p>压缩提交的时候,<code>SourceTree</code>会自动生成默认的<code>提交消息</code>.</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185208.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="可选-如果需要修改提交信息"><a href="#可选-如果需要修改提交信息" class="headerlink" title="(可选)如果需要修改提交信息"></a>(可选)如果需要修改提交信息</h3><p><strong>⚠️注意: 使用交互式rebase修改提交消息(commit message), 会改变当前和之后所有提交节点的提交id</strong><br>所以, 主分支(例如:master)也最好不要使用这个操作</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185209.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185211.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185214.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185217.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://kinboyw.github.io/2019/04/09/Git-%E5%8E%8B%E7%BC%A9%E5%A4%9A%E4%B8%AAcommit%E4%B8%BA%E5%8D%95%E4%B8%AAcommit/">Git 压缩多个commit为单个commit</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jet_KILL/article/details/115767229">sourcetree如何合并多个提交</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/67">惊艳！小姐姐用动画图解 Git 的 10 大命令，这也太秀了吧！</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Git%E7%AC%94%E8%AE%B0/" class="category-chain-item">Git笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Git/" class="print-no-link">#Git</a>
+      
+        <a href="/tags/Git-rebase/" class="print-no-link">#Git rebase</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>交互式git rebase压缩提交记录,合并提交记录</div>
+      <div>https://blog.wingogo.top/posts/97cc233e0946/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>夏日雪糕</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/c811bd6c3d8e/" title="主板开机跳线安装说明">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">主板开机跳线安装说明</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/390902fb9215/" title="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机">
+                        <span class="hidden-mobile">折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
