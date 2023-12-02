@@ -16,27 +16,28 @@
   <meta name="author" content="夏日雪糕">
   <meta name="keywords" content="海克斯科技,wingogo">
   
-    <meta name="description" content="前言交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等. 本文安装git图形工具SourceTree. 以图形界面方式能更好地查看commit节点情况 本文中说到”压缩提交”和”合并提交”是同一个意思 ⚠️注意最好不要在主分支(例如:master)使用交互式rebase操作提交记录.  因为交互式rebase操作会令参与操作的提交节点和之后的所有提交节点的提交id(">
+    <meta name="description" content="一. 下载Openwrt固件包https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;folders&#x2F;1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr  二. 在PVE中添加虚拟机1、开始创建虚拟机  2、设置CD&#x2F;DVD选择“不适用任何介质”，操作系统和版本默认即可，点击“下一步”。  3、设置系统默认选项,直接下一步  4、设置硬盘直接使用默认选项，之后会删除. 然后用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="交互式git rebase压缩提交记录,合并提交记录">
-<meta property="og:url" content="https://blog.wingogo.top/posts/97cc233e0946/index.html">
+<meta property="og:title" content="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机">
+<meta property="og:url" content="https://blog.wingogo.top/posts/98f69bf77e98/index.html">
 <meta property="og:site_name" content="夏日雪糕">
-<meta property="og:description" content="前言交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等. 本文安装git图形工具SourceTree. 以图形界面方式能更好地查看commit节点情况 本文中说到”压缩提交”和”合并提交”是同一个意思 ⚠️注意最好不要在主分支(例如:master)使用交互式rebase操作提交记录.  因为交互式rebase操作会令参与操作的提交节点和之后的所有提交节点的提交id(">
+<meta property="og:description" content="一. 下载Openwrt固件包https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;folders&#x2F;1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr  二. 在PVE中添加虚拟机1、开始创建虚拟机  2、设置CD&#x2F;DVD选择“不适用任何介质”，操作系统和版本默认即可，点击“下一步”。  3、设置系统默认选项,直接下一步  4、设置硬盘直接使用默认选项，之后会删除. 然后用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp">
-<meta property="article:published_time" content="2023-08-24T10:55:00.000Z">
-<meta property="article:modified_time" content="2023-09-21T05:20:49.095Z">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
+<meta property="article:published_time" content="2023-01-29T07:19:00.000Z">
+<meta property="article:modified_time" content="2023-09-21T05:20:49.097Z">
 <meta property="article:author" content="夏日雪糕">
-<meta property="article:tag" content="Git">
-<meta property="article:tag" content="Git rebase">
+<meta property="article:tag" content="虚拟机">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="PVE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>交互式git rebase压缩提交记录,合并提交记录 - 夏日雪糕</title>
+  <title>折腾PVE虚拟机系列: 03.创建Openwrt虚拟机 - 夏日雪糕</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,13 +203,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp') no-repeat center center; background-size: cover;">
+     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="交互式git rebase压缩提交记录,合并提交记录"></span>
+            <span id="subtitle" data-typed-text="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机"></span>
           
         </div>
 
@@ -219,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-24 18:55" pubdate>
-          2023年8月24日 晚上
+        <time datetime="2023-01-29 15:19" pubdate>
+          2023年1月29日 下午
         </time>
       </span>
     
@@ -279,78 +280,87 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">交互式git rebase压缩提交记录,合并提交记录</h1>
+            <h1 id="seo-header">折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等.</p>
-<p>本文安装git图形工具<code>SourceTree</code>. 以图形界面方式能更好地查看<code>commit节点</code>情况</p>
-<p>本文中说到”压缩提交”和”合并提交”是同一个意思</p>
-<h3 id="⚠️注意"><a href="#⚠️注意" class="headerlink" title="⚠️注意"></a>⚠️注意</h3><p><strong>最好不要在主分支(例如:master)使用交互式rebase操作提交记录.</strong> </p>
-<p><strong>因为交互式rebase操作会令<code>参与操作的提交节点</code>和<code>之后的所有提交节点</code>的提交id(commit-hash)会发生变化.</strong></p>
-<h2 id="方式1-使用命令压缩提交"><a href="#方式1-使用命令压缩提交" class="headerlink" title="方式1: 使用命令压缩提交"></a>方式1: 使用命令压缩提交</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase -i [commit-hash]<br></code></pre></td></tr></table></figure>
-
-<p>动画例子: <code>git rebase -i i8fe5</code> 管理<code>i8fe5</code> 之后的提交节点</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185136.webp" srcset="/img/loading.gif" lazyload></p>
-<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>用<code>SourceTree</code>打开项目可以看到, 分支上有6个提交记录, v1 — v6</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185132.png" srcset="/img/loading.gif" lazyload></p>
-<p>目标: 压缩v1之后的提交到v2, 即: 合并(v3, v4, v5, v6) —&gt; v2</p>
-<h3 id="1-找出基点提交id-commit-hash"><a href="#1-找出基点提交id-commit-hash" class="headerlink" title="1. 找出基点提交id(commit-hash)."></a>1. <strong>找出基点提交id(commit-hash).</strong></h3><p>基点: 变基rebase参考点, 参考点可以理解为”地基”.只作为参照,不参与操作</p>
-<p>案例中v1就是基点, 所以<strong>要找到v1的提交id</strong></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185142.png" srcset="/img/loading.gif" lazyload alt="基点"></p>
-<p>通过<code>SourceTree</code>或<code>git log</code>, 找到v1的提交id</p>
-<p><strong>v1提交id为: <code>b6919c7</code></strong></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185147.png" srcset="/img/loading.gif" lazyload alt="v1提交id"></p>
-<h3 id="2-执行交互式git-rebase命令"><a href="#2-执行交互式git-rebase命令" class="headerlink" title="2. 执行交互式git rebase命令"></a>2. 执行交互式git rebase命令</h3><p>找到v1的提交id(<code>b6919c7</code>)后, 可以执行命令管理v1之后的提交节点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase -i b6919c7 <br></code></pre></td></tr></table></figure>
-
-<p>执行命令后显示</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185149.png" srcset="/img/loading.gif" lazyload></p>
-<p>其中<strong>pick</strong>, <strong>squash</strong>, <strong>fixup</strong>这3个操作与压缩提交有关</p>
+                <h2 id="一-下载Openwrt固件包"><a href="#一-下载Openwrt固件包" class="headerlink" title="一. 下载Openwrt固件包"></a>一. 下载Openwrt固件包</h2><p><a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr">https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr</a></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129150954.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="二-在PVE中添加虚拟机"><a href="#二-在PVE中添加虚拟机" class="headerlink" title="二. 在PVE中添加虚拟机"></a>二. 在PVE中添加虚拟机</h2><h3 id="1、开始创建虚拟机"><a href="#1、开始创建虚拟机" class="headerlink" title="1、开始创建虚拟机"></a>1、开始创建虚拟机</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129150950.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129150940.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2、设置CD-DVD"><a href="#2、设置CD-DVD" class="headerlink" title="2、设置CD/DVD"></a>2、设置CD/DVD</h3><p>选择“不适用任何介质”，操作系统和版本默认即可，点击“下一步”。</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129150936.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3、设置系统"><a href="#3、设置系统" class="headerlink" title="3、设置系统"></a>3、设置系统</h3><p>默认选项,直接下一步</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151002.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4、设置硬盘"><a href="#4、设置硬盘" class="headerlink" title="4、设置硬盘"></a>4、设置硬盘</h3><p>直接使用默认选项，之后会删除. 然后用刚刚下载的img镜像创建虚拟磁盘。</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151006.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5、CPU核心数量按需添加，一般双核足够了"><a href="#5、CPU核心数量按需添加，一般双核足够了" class="headerlink" title="5、CPU核心数量按需添加，一般双核足够了"></a>5、CPU核心数量按需添加，一般双核足够了</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151010.png" srcset="/img/loading.gif" lazyload></p>
+<p>注意: aes需要选**+号**开启</p>
+<h3 id="6、设置内存"><a href="#6、设置内存" class="headerlink" title="6、设置内存"></a>6、设置内存</h3><p>openwrt系统不要太多内存, 建议分配1G即可</p>
+<p>内存256MB以上都是够的，系统有富余就多加一点，一般不用超高2GB，点击“下一步”</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151013.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="7、设置网络"><a href="#7、设置网络" class="headerlink" title="7、设置网络"></a>7、设置网络</h3><p>PVE虚拟机可选网卡模型（虚拟网卡）有Intel E1000、VirtIO（半虚拟化）、Realtek RTL8139和VMware vmxnet3四种。建议选用默认的VirtIO（半虚拟化），其性能和效率最高。</p>
+<p>VirtIO模型在Openwrt内会显示“Unknown!半双工”，但实测是千兆全双工，不影响使用。</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151015.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="8、最后确认下所有设置和参数，点击完成。"><a href="#8、最后确认下所有设置和参数，点击完成。" class="headerlink" title="8、最后确认下所有设置和参数，点击完成。"></a>8、最后确认下所有设置和参数，点击完成。</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151018.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="9、分离不用的硬盘"><a href="#9、分离不用的硬盘" class="headerlink" title="9、分离不用的硬盘"></a>9、分离不用的硬盘</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151021.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="10、删除不用的硬盘和光驱"><a href="#10、删除不用的硬盘和光驱" class="headerlink" title="10、删除不用的硬盘和光驱"></a>10、删除不用的硬盘和光驱</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151023.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="三-添加虚拟机硬盘"><a href="#三-添加虚拟机硬盘" class="headerlink" title="三. 添加虚拟机硬盘"></a>三. 添加虚拟机硬盘</h2><h3 id="1、上传Openwrt镜像"><a href="#1、上传Openwrt镜像" class="headerlink" title="1、上传Openwrt镜像:"></a>1、上传Openwrt镜像:</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151026.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151027.png" srcset="/img/loading.gif" lazyload></p>
+<p>上传成功, 图中标记的是镜像存放位置<br><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151029.png" srcset="/img/loading.gif" lazyload></p>
+<p>“local”和“local-lvm”存储空间的内容说明：</p>
 <ul>
-<li><code>pick</code>: 使用提交</li>
-<li><code>squash</code> : 将提交融合到前一个提交中；</li>
-<li><code>fixup</code>: 将提交融合到前一个提交中，不保留该提交的日志消息；</li>
+<li>local：VZDump备份文件, ISO镜像, 容器模板</li>
+<li>local-lvm：磁盘映像, 容器</li>
 </ul>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">p, pick &lt;commit&gt; = use commit<br>r, reword &lt;commit&gt; = use commit, but edit the commit message<br>e, edit &lt;commit&gt; = use commit, but stop for amending<br>s, squash &lt;commit&gt; = use commit, but meld into previous commit<br>f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit&#x27;s log message<br>x, exec &lt;command&gt; = run command (the rest of the line) using shell<br></code></pre></td></tr></table></figure>
+<p>其中local-lvm不能上传文件，只能用“qm importdisk”命令把镜像转换成虚拟磁盘并存储在里面（或创建磁盘和磁盘映射），这样做比上传到root根目录更便捷而且便于管理。</p>
+<h3 id="2、查看上传镜像的目录："><a href="#2、查看上传镜像的目录：" class="headerlink" title="2、查看上传镜像的目录："></a>2、查看上传镜像的目录：</h3><p>点击”日志”</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151031.png" srcset="/img/loading.gif" lazyload></p>
+<p>查看刚才上传文件的日志</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151035.png" srcset="/img/loading.gif" lazyload></p>
+<p>看到刚才上传的文件存放位置</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151039.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/var/lib/vz/template/iso/openwrt-buddha-version-v1_2023_-x86-64-generic-squashfs-uefi.img<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824191649.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-修改git-rebase的交互文本压缩提交"><a href="#3-修改git-rebase的交互文本压缩提交" class="headerlink" title="3. 修改git rebase的交互文本压缩提交"></a>3. 修改git rebase的交互文本压缩提交</h3><p>压缩(v3,v4,v5,v6) —&gt; v2 , </p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs txt">pick d9ca07c v2<br>f 3f83f0a v3<br>f ab92fa4 v4<br>f abcde39 v5<br>f 0034515 v6<br></code></pre></td></tr></table></figure>
+<h3 id="3、把镜像转成虚拟磁盘并导入到虚拟机"><a href="#3、把镜像转成虚拟磁盘并导入到虚拟机" class="headerlink" title="3、把镜像转成虚拟磁盘并导入到虚拟机"></a>3、把镜像转成虚拟磁盘并导入到虚拟机</h3><p>选择“pve”根节点 &gt; shell &gt; 输入以下命令并回车：</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151041.png" srcset="/img/loading.gif" lazyload></p>
+<p>把镜像转成虚拟磁盘并导入到虚拟机</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151044.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151116.png" srcset="/img/loading.gif" lazyload></p>
+<p>命令模板</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">qm importdisk 虚拟机<span class="hljs-built_in">id</span> 镜像位置 local-lvm<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185152.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li><code>f, fixup</code>: 将提交融合到前一个提交中，不保留该提交的日志消息；</li>
-<li><code>pick</code>: 使用提交</li>
+<li>qm importdisk是PVE导入磁盘到虚拟机的工具，</li>
+<li>虚拟机id: 虚拟机的编号，</li>
+<li>镜像位置: 是刚才上传Openwrt镜像的完整目录，</li>
+<li>‘local-lvm’是PVE储存虚拟磁盘的存储空间。</li>
 </ul>
-<p>确认编辑完成后, “:wq”保存退出</p>
-<h3 id="4-效果"><a href="#4-效果" class="headerlink" title="4. 效果"></a>4. 效果</h3><p>(v3, v4, v5, v6) 合并到 v2 </p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185156.png" srcset="/img/loading.gif" lazyload alt="合并后"></p>
-<p><strong>图中的v2是一个全新的提交节点</strong>, 提交id和之前的v2是不同的. 只是提交信息和之前的v2相同而已</p>
-<h2 id="方式2-使用图形界面压缩提交"><a href="#方式2-使用图形界面压缩提交" class="headerlink" title="方式2: 使用图形界面压缩提交"></a>方式2: 使用图形界面压缩提交</h2><p>图形界面软件: <a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">SourceTree</a></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185158.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185200.png" srcset="/img/loading.gif" lazyload></p>
-<p>依次操作</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185202.png" srcset="/img/loading.gif" lazyload></p>
-<p>按钮“<strong>用此前的squash</strong>”  可以理解为讲选择的提交记<code>v6</code>录合并到上一个提交记录<code>v5</code></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230828140905.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185204.png" srcset="/img/loading.gif" lazyload></p>
-<p>之后依次把v3,v4,v5,v6合并</p>
-<p>确定操作,点击”确认”.</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185206.png" srcset="/img/loading.gif" lazyload></p>
-<p>压缩提交的时候,<code>SourceTree</code>会自动生成默认的<code>提交消息</code>.</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185208.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="可选-如果需要修改提交信息"><a href="#可选-如果需要修改提交信息" class="headerlink" title="(可选)如果需要修改提交信息"></a>(可选)如果需要修改提交信息</h3><p><strong>⚠️注意: 使用交互式rebase修改提交消息(commit message), 会改变当前和之后所有提交节点的提交id</strong><br>所以, 主分支(例如:master)也最好不要使用这个操作</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185209.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185211.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185214.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185217.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://kinboyw.github.io/2019/04/09/Git-%E5%8E%8B%E7%BC%A9%E5%A4%9A%E4%B8%AAcommit%E4%B8%BA%E5%8D%95%E4%B8%AAcommit/">Git 压缩多个commit为单个commit</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jet_KILL/article/details/115767229">sourcetree如何合并多个提交</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/67">惊艳！小姐姐用动画图解 Git 的 10 大命令，这也太秀了吧！</a></li>
-</ul>
+<p>例如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">qm importdisk 102 /var/lib/vz/template/iso/openwrt-buddha-version-v1_2023_-x86-64-generic-squashfs-uefi.img local-lvm<br></code></pre></td></tr></table></figure>
+
+<h3 id="4、修改磁盘属性"><a href="#4、修改磁盘属性" class="headerlink" title="4、修改磁盘属性"></a>4、修改磁盘属性</h3><p>导入成功后,在openwrt虚拟机”硬件”里面可以见到”未使用的磁盘0”。需要修改磁盘属性</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151047.png" srcset="/img/loading.gif" lazyload></p>
+<p>修改磁盘属性</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151049.png" srcset="/img/loading.gif" lazyload></p>
+<p>改为SATA</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151214.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151050.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5、修改虚拟机的引导顺序"><a href="#5、修改虚拟机的引导顺序" class="headerlink" title="5、修改虚拟机的引导顺序"></a>5、修改虚拟机的引导顺序</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151125.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151052.png" srcset="/img/loading.gif" lazyload></p>
+<p>点击OK, 完成设置</p>
+<h3 id="6、启动虚拟机-测试正常运行-到此-完成安装"><a href="#6、启动虚拟机-测试正常运行-到此-完成安装" class="headerlink" title="6、启动虚拟机, 测试正常运行. 到此,完成安装."></a>6、启动虚拟机, 测试正常运行. 到此,完成安装.</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151054.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="四-登录openwrt命令行-修改ip地址"><a href="#四-登录openwrt命令行-修改ip地址" class="headerlink" title="四. 登录openwrt命令行,  修改ip地址"></a>四. 登录openwrt命令行,  修改ip地址</h2><p>选中openwrt虚拟机, 点击”<em>控制台”修改ip地址</em></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151055.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/config/network<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151057.png" srcset="/img/loading.gif" lazyload></p>
+<p>把 <code>option gateway &#39;192.168.5.1&#39;</code>改成自己需要的IP地址，如192.168.100.2，再按ESC键，再按：wq保存退出，重启即可。</p>
+<h2 id="五-用浏览器登录Openwrt"><a href="#五-用浏览器登录Openwrt" class="headerlink" title="五. 用浏览器登录Openwrt"></a>五. 用浏览器登录Openwrt</h2><p>在浏览器中输入openwrt的<code>ip地址</code>, 即可登录openwrt</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151059.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151101.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151103.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -369,7 +379,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Git%E7%AC%94%E8%AE%B0/" class="category-chain-item">Git笔记</a>
+  <a href="/categories/%E6%8A%98%E8%85%BE%E8%99%9A%E6%8B%9F%E6%9C%BAPVE/" class="category-chain-item">折腾虚拟机PVE</a>
   
   
 
@@ -384,9 +394,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Git/" class="print-no-link">#Git</a>
+        <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="print-no-link">#虚拟机</a>
       
-        <a href="/tags/Git-rebase/" class="print-no-link">#Git rebase</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/PVE/" class="print-no-link">#PVE</a>
       
     </div>
   
@@ -398,8 +410,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>交互式git rebase压缩提交记录,合并提交记录</div>
-      <div>https://blog.wingogo.top/posts/97cc233e0946/</div>
+      <div>折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</div>
+      <div>https://blog.wingogo.top/posts/98f69bf77e98/</div>
     </div>
     <div class="license-meta">
       
@@ -411,7 +423,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月24日</div>
+          <div>2023年1月29日</div>
         </div>
       
       
@@ -443,9 +455,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/c811bd6c3d8e/" title="主板开机跳线安装说明">
+                      <a href="/posts/5126db6466c6/" title="交互式git rebase压缩提交记录,合并提交记录">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">主板开机跳线安装说明</span>
+                        <span class="hidden-mobile">交互式git rebase压缩提交记录,合并提交记录</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -453,8 +465,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/390902fb9215/" title="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机">
-                        <span class="hidden-mobile">折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</span>
+                      <a href="/posts/5797774afeae/" title="折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器">
+                        <span class="hidden-mobile">折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

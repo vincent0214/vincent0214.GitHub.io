@@ -16,26 +16,27 @@
   <meta name="author" content="夏日雪糕">
   <meta name="keywords" content="海克斯科技,wingogo">
   
-    <meta name="description" content="原文: https:&#x2F;&#x2F;www.cnblogs.com&#x2F;my466879168&#x2F;p&#x2F;12960700.html  1. 如果你修改了某个文件但还没有将其添加到暂存区，可以使用以下命令来撤销更改并还原到最近一次提交时的状态1234567# 放弃单个文件的修改git checkout -- &lt;文件名&gt;git restore &lt;文件名&gt;# 放弃多个文件的修改git checko">
+    <meta name="description" content="前言交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等. 本文安装git图形工具SourceTree. 以图形界面方式能更好地查看commit节点情况 本文中说到”压缩提交”和”合并提交”是同一个意思 ⚠️注意最好不要在主分支(例如:master)使用交互式rebase操作提交记录.  因为交互式rebase操作会令参与操作的提交节点和之后的所有提交节点的提交id(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git文件怎么撤销修改">
-<meta property="og:url" content="https://blog.wingogo.top/posts/53f56ad8909d/index.html">
+<meta property="og:title" content="交互式git rebase压缩提交记录,合并提交记录">
+<meta property="og:url" content="https://blog.wingogo.top/posts/5126db6466c6/index.html">
 <meta property="og:site_name" content="夏日雪糕">
-<meta property="og:description" content="原文: https:&#x2F;&#x2F;www.cnblogs.com&#x2F;my466879168&#x2F;p&#x2F;12960700.html  1. 如果你修改了某个文件但还没有将其添加到暂存区，可以使用以下命令来撤销更改并还原到最近一次提交时的状态1234567# 放弃单个文件的修改git checkout -- &lt;文件名&gt;git restore &lt;文件名&gt;# 放弃多个文件的修改git checko">
+<meta property="og:description" content="前言交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等. 本文安装git图形工具SourceTree. 以图形界面方式能更好地查看commit节点情况 本文中说到”压缩提交”和”合并提交”是同一个意思 ⚠️注意最好不要在主分支(例如:master)使用交互式rebase操作提交记录.  因为交互式rebase操作会令参与操作的提交节点和之后的所有提交节点的提交id(">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231230931.jpg">
-<meta property="article:published_time" content="2021-12-31T14:30:00.000Z">
-<meta property="article:modified_time" content="2023-09-21T05:20:49.094Z">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp">
+<meta property="article:published_time" content="2023-08-24T10:55:00.000Z">
+<meta property="article:modified_time" content="2023-09-21T05:20:49.095Z">
 <meta property="article:author" content="夏日雪糕">
 <meta property="article:tag" content="Git">
+<meta property="article:tag" content="Git rebase">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231230931.jpg">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Git文件怎么撤销修改 - 夏日雪糕</title>
+  <title>交互式git rebase压缩提交记录,合并提交记录 - 夏日雪糕</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,13 +202,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231230931.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231174052.webp') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Git文件怎么撤销修改"></span>
+            <span id="subtitle" data-typed-text="交互式git rebase压缩提交记录,合并提交记录"></span>
           
         </div>
 
@@ -218,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-12-31 22:30" pubdate>
-          2021年12月31日 晚上
+        <time datetime="2023-08-24 18:55" pubdate>
+          2023年8月24日 晚上
         </time>
       </span>
     
@@ -230,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          623 字
+          1.5k 字
         
       </span>
     
@@ -241,7 +242,7 @@
         
         
         
-          6 分钟
+          13 分钟
         
       </span>
     
@@ -278,22 +279,79 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Git文件怎么撤销修改</h1>
+            <h1 id="seo-header">交互式git rebase压缩提交记录,合并提交记录</h1>
             
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p>原文: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/my466879168/p/12960700.html">https://www.cnblogs.com/my466879168/p/12960700.html</a></p>
-</blockquote>
-<h3 id="1-如果你修改了某个文件但还没有将其添加到暂存区，可以使用以下命令来撤销更改并还原到最近一次提交时的状态"><a href="#1-如果你修改了某个文件但还没有将其添加到暂存区，可以使用以下命令来撤销更改并还原到最近一次提交时的状态" class="headerlink" title="1. 如果你修改了某个文件但还没有将其添加到暂存区，可以使用以下命令来撤销更改并还原到最近一次提交时的状态"></a>1. 如果你修改了某个文件但还没有将其添加到暂存区，可以使用以下命令来撤销更改并还原到最近一次提交时的状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 放弃单个文件的修改</span><br>git checkout -- &lt;文件名&gt;<br>git restore &lt;文件名&gt;<br><br><span class="hljs-comment"># 放弃多个文件的修改</span><br>git checkout .<br>git restore .<br></code></pre></td></tr></table></figure>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>交互式git reabse可以编辑某个提交点之后的提交记录.包括删除,修改,合并等.</p>
+<p>本文安装git图形工具<code>SourceTree</code>. 以图形界面方式能更好地查看<code>commit节点</code>情况</p>
+<p>本文中说到”压缩提交”和”合并提交”是同一个意思</p>
+<h3 id="⚠️注意"><a href="#⚠️注意" class="headerlink" title="⚠️注意"></a>⚠️注意</h3><p><strong>最好不要在主分支(例如:master)使用交互式rebase操作提交记录.</strong> </p>
+<p><strong>因为交互式rebase操作会令<code>参与操作的提交节点</code>和<code>之后的所有提交节点</code>的提交id(commit-hash)会发生变化.</strong></p>
+<h2 id="方式1-使用命令压缩提交"><a href="#方式1-使用命令压缩提交" class="headerlink" title="方式1: 使用命令压缩提交"></a>方式1: 使用命令压缩提交</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase -i [commit-hash]<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-文件已经add过了从工作区到暂存区了-需要在回退到工作区中"><a href="#2-文件已经add过了从工作区到暂存区了-需要在回退到工作区中" class="headerlink" title="2. 文件已经add过了从工作区到暂存区了, 需要在回退到工作区中"></a>2. 文件已经add过了从工作区到暂存区了, 需要在回退到工作区中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset HEAD -- . <span class="hljs-comment"># 回退所有的暂存区文件</span><br>git reset HEAD -- &lt;文件名&gt;  <span class="hljs-comment"># 回退指定的暂存区文件</span><br><br>git restore --staged &lt;文件名&gt; <span class="hljs-comment"># 回退指定的暂存区文件</span><br>git restore --staged . <span class="hljs-comment"># 回退所有的文件</span><br>git restore--staged *.js <span class="hljs-comment"># 所有暂存区的js文件回退</span><br></code></pre></td></tr></table></figure>
+<p>动画例子: <code>git rebase -i i8fe5</code> 管理<code>i8fe5</code> 之后的提交节点</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185136.webp" srcset="/img/loading.gif" lazyload></p>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>用<code>SourceTree</code>打开项目可以看到, 分支上有6个提交记录, v1 — v6</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185132.png" srcset="/img/loading.gif" lazyload></p>
+<p>目标: 压缩v1之后的提交到v2, 即: 合并(v3, v4, v5, v6) —&gt; v2</p>
+<h3 id="1-找出基点提交id-commit-hash"><a href="#1-找出基点提交id-commit-hash" class="headerlink" title="1. 找出基点提交id(commit-hash)."></a>1. <strong>找出基点提交id(commit-hash).</strong></h3><p>基点: 变基rebase参考点, 参考点可以理解为”地基”.只作为参照,不参与操作</p>
+<p>案例中v1就是基点, 所以<strong>要找到v1的提交id</strong></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185142.png" srcset="/img/loading.gif" lazyload alt="基点"></p>
+<p>通过<code>SourceTree</code>或<code>git log</code>, 找到v1的提交id</p>
+<p><strong>v1提交id为: <code>b6919c7</code></strong></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185147.png" srcset="/img/loading.gif" lazyload alt="v1提交id"></p>
+<h3 id="2-执行交互式git-rebase命令"><a href="#2-执行交互式git-rebase命令" class="headerlink" title="2. 执行交互式git rebase命令"></a>2. 执行交互式git rebase命令</h3><p>找到v1的提交id(<code>b6919c7</code>)后, 可以执行命令管理v1之后的提交节点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git rebase -i b6919c7 <br></code></pre></td></tr></table></figure>
 
-<h3 id="3-文件已经commit过后怎么回退"><a href="#3-文件已经commit过后怎么回退" class="headerlink" title="3. 文件已经commit过后怎么回退"></a>3. 文件已经commit过后怎么回退</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git reset --soft HEAD^ <span class="hljs-comment"># 撤销本次的commit 回退到暂存区</span><br>git restore -s HEAD~1 . <span class="hljs-comment"># 回退到上一个commit版本这次的代码全消失</span><br>git restore -s 91410eb9 . <span class="hljs-comment"># 指定明确的commit id 然后回退</span><br></code></pre></td></tr></table></figure>
+<p>执行命令后显示</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185149.png" srcset="/img/loading.gif" lazyload></p>
+<p>其中<strong>pick</strong>, <strong>squash</strong>, <strong>fixup</strong>这3个操作与压缩提交有关</p>
+<ul>
+<li><code>pick</code>: 使用提交</li>
+<li><code>squash</code> : 将提交融合到前一个提交中；</li>
+<li><code>fixup</code>: 将提交融合到前一个提交中，不保留该提交的日志消息；</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs txt">p, pick &lt;commit&gt; = use commit<br>r, reword &lt;commit&gt; = use commit, but edit the commit message<br>e, edit &lt;commit&gt; = use commit, but stop for amending<br>s, squash &lt;commit&gt; = use commit, but meld into previous commit<br>f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit&#x27;s log message<br>x, exec &lt;command&gt; = run command (the rest of the line) using shell<br></code></pre></td></tr></table></figure>
 
-<h3 id="4-commit之后发现注释写错了修改注释"><a href="#4-commit之后发现注释写错了修改注释" class="headerlink" title="4. commit之后发现注释写错了修改注释"></a>4. commit之后发现注释写错了修改注释</h3><p>注意: 如果当前提交推送到远端, 请不要执行这个操作.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git commit --amend  <span class="hljs-comment"># 此时会进入vim编辑器 修改后保存即可</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824191649.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-修改git-rebase的交互文本压缩提交"><a href="#3-修改git-rebase的交互文本压缩提交" class="headerlink" title="3. 修改git rebase的交互文本压缩提交"></a>3. 修改git rebase的交互文本压缩提交</h3><p>压缩(v3,v4,v5,v6) —&gt; v2 , </p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs txt">pick d9ca07c v2<br>f 3f83f0a v3<br>f ab92fa4 v4<br>f abcde39 v5<br>f 0034515 v6<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185152.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><code>f, fixup</code>: 将提交融合到前一个提交中，不保留该提交的日志消息；</li>
+<li><code>pick</code>: 使用提交</li>
+</ul>
+<p>确认编辑完成后, “:wq”保存退出</p>
+<h3 id="4-效果"><a href="#4-效果" class="headerlink" title="4. 效果"></a>4. 效果</h3><p>(v3, v4, v5, v6) 合并到 v2 </p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185156.png" srcset="/img/loading.gif" lazyload alt="合并后"></p>
+<p><strong>图中的v2是一个全新的提交节点</strong>, 提交id和之前的v2是不同的. 只是提交信息和之前的v2相同而已</p>
+<h2 id="方式2-使用图形界面压缩提交"><a href="#方式2-使用图形界面压缩提交" class="headerlink" title="方式2: 使用图形界面压缩提交"></a>方式2: 使用图形界面压缩提交</h2><p>图形界面软件: <a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">SourceTree</a></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185158.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185200.png" srcset="/img/loading.gif" lazyload></p>
+<p>依次操作</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185202.png" srcset="/img/loading.gif" lazyload></p>
+<p>按钮“<strong>用此前的squash</strong>”  可以理解为讲选择的提交记<code>v6</code>录合并到上一个提交记录<code>v5</code></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230828140905.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185204.png" srcset="/img/loading.gif" lazyload></p>
+<p>之后依次把v3,v4,v5,v6合并</p>
+<p>确定操作,点击”确认”.</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185206.png" srcset="/img/loading.gif" lazyload></p>
+<p>压缩提交的时候,<code>SourceTree</code>会自动生成默认的<code>提交消息</code>.</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185208.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="可选-如果需要修改提交信息"><a href="#可选-如果需要修改提交信息" class="headerlink" title="(可选)如果需要修改提交信息"></a>(可选)如果需要修改提交信息</h3><p><strong>⚠️注意: 使用交互式rebase修改提交消息(commit message), 会改变当前和之后所有提交节点的提交id</strong><br>所以, 主分支(例如:master)也最好不要使用这个操作</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185209.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185211.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185214.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230824185217.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://kinboyw.github.io/2019/04/09/Git-%E5%8E%8B%E7%BC%A9%E5%A4%9A%E4%B8%AAcommit%E4%B8%BA%E5%8D%95%E4%B8%AAcommit/">Git 压缩多个commit为单个commit</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jet_KILL/article/details/115767229">sourcetree如何合并多个提交</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/67">惊艳！小姐姐用动画图解 Git 的 10 大命令，这也太秀了吧！</a></li>
+</ul>
+
                 
               </div>
             
@@ -328,6 +386,8 @@
       
         <a href="/tags/Git/" class="print-no-link">#Git</a>
       
+        <a href="/tags/Git-rebase/" class="print-no-link">#Git rebase</a>
+      
     </div>
   
 </div>
@@ -338,8 +398,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Git文件怎么撤销修改</div>
-      <div>https://blog.wingogo.top/posts/53f56ad8909d/</div>
+      <div>交互式git rebase压缩提交记录,合并提交记录</div>
+      <div>https://blog.wingogo.top/posts/5126db6466c6/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +411,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年12月31日</div>
+          <div>2023年8月24日</div>
         </div>
       
       
@@ -383,9 +443,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/45c69e2ed9bb/" title="免费开源视频下载器Hitomi Downloader,可以下载Youtube视频">
+                      <a href="/posts/c811bd6c3d8e/" title="主板开机跳线安装说明">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">免费开源视频下载器Hitomi Downloader,可以下载Youtube视频</span>
+                        <span class="hidden-mobile">主板开机跳线安装说明</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -393,8 +453,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/1d97ef4f47b7/" title="如何用Git进行协作开发">
-                        <span class="hidden-mobile">如何用Git进行协作开发</span>
+                      <a href="/posts/98f69bf77e98/" title="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机">
+                        <span class="hidden-mobile">折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

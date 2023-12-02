@@ -16,28 +16,29 @@
   <meta name="author" content="夏日雪糕">
   <meta name="keywords" content="海克斯科技,wingogo">
   
-    <meta name="description" content="一. 下载Openwrt固件包https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;folders&#x2F;1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr  二. 在PVE中添加虚拟机1、开始创建虚拟机  2、设置CD&#x2F;DVD选择“不适用任何介质”，操作系统和版本默认即可，点击“下一步”。  3、设置系统默认选项,直接下一步  4、设置硬盘直接使用默认选项，之后会删除. 然后用">
+    <meta name="description" content="安装adb和fastboot下载地址 设置环境变量  确保你的电脑已经配置好adb 和fastboot 的环境变量.  原文: https:&#x2F;&#x2F;wiki.lineageos.org&#x2F;adb_fastboot_guide.html   解锁手机下载解锁工具 http:&#x2F;&#x2F;www.miui.com&#x2F;unlock&#x2F;index.html   开启开发者选项「设置」-&gt; 「全部参数」-&gt; 连续点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机">
-<meta property="og:url" content="https://blog.wingogo.top/posts/390902fb9215/index.html">
+<meta property="og:title" content="红米7手机刷LineageOS系统">
+<meta property="og:url" content="https://blog.wingogo.top/posts/2eaab60b6bd4/index.html">
 <meta property="og:site_name" content="夏日雪糕">
-<meta property="og:description" content="一. 下载Openwrt固件包https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;folders&#x2F;1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr  二. 在PVE中添加虚拟机1、开始创建虚拟机  2、设置CD&#x2F;DVD选择“不适用任何介质”，操作系统和版本默认即可，点击“下一步”。  3、设置系统默认选项,直接下一步  4、设置硬盘直接使用默认选项，之后会删除. 然后用">
+<meta property="og:description" content="安装adb和fastboot下载地址 设置环境变量  确保你的电脑已经配置好adb 和fastboot 的环境变量.  原文: https:&#x2F;&#x2F;wiki.lineageos.org&#x2F;adb_fastboot_guide.html   解锁手机下载解锁工具 http:&#x2F;&#x2F;www.miui.com&#x2F;unlock&#x2F;index.html   开启开发者选项「设置」-&gt; 「全部参数」-&gt; 连续点">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
-<meta property="article:published_time" content="2023-01-29T07:19:00.000Z">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png">
+<meta property="article:published_time" content="2021-07-02T10:00:00.000Z">
 <meta property="article:modified_time" content="2023-09-21T05:20:49.097Z">
 <meta property="article:author" content="夏日雪糕">
-<meta property="article:tag" content="虚拟机">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="PVE">
+<meta property="article:tag" content="手机刷ROM">
+<meta property="article:tag" content="红米手机">
+<meta property="article:tag" content="小米手机">
+<meta property="article:tag" content="红米7">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>折腾PVE虚拟机系列: 03.创建Openwrt虚拟机 - 夏日雪糕</title>
+  <title>红米7手机刷LineageOS系统 - 夏日雪糕</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,13 +204,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机"></span>
+            <span id="subtitle" data-typed-text="红米7手机刷LineageOS系统"></span>
           
         </div>
 
@@ -220,8 +221,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-29 15:19" pubdate>
-          2023年1月29日 下午
+        <time datetime="2021-07-02 18:00" pubdate>
+          2021年7月2日 晚上
         </time>
       </span>
     
@@ -232,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          989 字
         
       </span>
     
@@ -243,7 +244,7 @@
         
         
         
-          13 分钟
+          9 分钟
         
       </span>
     
@@ -280,87 +281,67 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</h1>
+            <h1 id="seo-header">红米7手机刷LineageOS系统</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="一-下载Openwrt固件包"><a href="#一-下载Openwrt固件包" class="headerlink" title="一. 下载Openwrt固件包"></a>一. 下载Openwrt固件包</h2><p><a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr">https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr</a></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129150954.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="二-在PVE中添加虚拟机"><a href="#二-在PVE中添加虚拟机" class="headerlink" title="二. 在PVE中添加虚拟机"></a>二. 在PVE中添加虚拟机</h2><h3 id="1、开始创建虚拟机"><a href="#1、开始创建虚拟机" class="headerlink" title="1、开始创建虚拟机"></a>1、开始创建虚拟机</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129150950.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129150940.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2、设置CD-DVD"><a href="#2、设置CD-DVD" class="headerlink" title="2、设置CD/DVD"></a>2、设置CD/DVD</h3><p>选择“不适用任何介质”，操作系统和版本默认即可，点击“下一步”。</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129150936.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3、设置系统"><a href="#3、设置系统" class="headerlink" title="3、设置系统"></a>3、设置系统</h3><p>默认选项,直接下一步</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151002.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="4、设置硬盘"><a href="#4、设置硬盘" class="headerlink" title="4、设置硬盘"></a>4、设置硬盘</h3><p>直接使用默认选项，之后会删除. 然后用刚刚下载的img镜像创建虚拟磁盘。</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151006.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="5、CPU核心数量按需添加，一般双核足够了"><a href="#5、CPU核心数量按需添加，一般双核足够了" class="headerlink" title="5、CPU核心数量按需添加，一般双核足够了"></a>5、CPU核心数量按需添加，一般双核足够了</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151010.png" srcset="/img/loading.gif" lazyload></p>
-<p>注意: aes需要选**+号**开启</p>
-<h3 id="6、设置内存"><a href="#6、设置内存" class="headerlink" title="6、设置内存"></a>6、设置内存</h3><p>openwrt系统不要太多内存, 建议分配1G即可</p>
-<p>内存256MB以上都是够的，系统有富余就多加一点，一般不用超高2GB，点击“下一步”</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151013.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="7、设置网络"><a href="#7、设置网络" class="headerlink" title="7、设置网络"></a>7、设置网络</h3><p>PVE虚拟机可选网卡模型（虚拟网卡）有Intel E1000、VirtIO（半虚拟化）、Realtek RTL8139和VMware vmxnet3四种。建议选用默认的VirtIO（半虚拟化），其性能和效率最高。</p>
-<p>VirtIO模型在Openwrt内会显示“Unknown!半双工”，但实测是千兆全双工，不影响使用。</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151015.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="8、最后确认下所有设置和参数，点击完成。"><a href="#8、最后确认下所有设置和参数，点击完成。" class="headerlink" title="8、最后确认下所有设置和参数，点击完成。"></a>8、最后确认下所有设置和参数，点击完成。</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151018.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="9、分离不用的硬盘"><a href="#9、分离不用的硬盘" class="headerlink" title="9、分离不用的硬盘"></a>9、分离不用的硬盘</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151021.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="10、删除不用的硬盘和光驱"><a href="#10、删除不用的硬盘和光驱" class="headerlink" title="10、删除不用的硬盘和光驱"></a>10、删除不用的硬盘和光驱</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151023.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="三-添加虚拟机硬盘"><a href="#三-添加虚拟机硬盘" class="headerlink" title="三. 添加虚拟机硬盘"></a>三. 添加虚拟机硬盘</h2><h3 id="1、上传Openwrt镜像"><a href="#1、上传Openwrt镜像" class="headerlink" title="1、上传Openwrt镜像:"></a>1、上传Openwrt镜像:</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151026.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151027.png" srcset="/img/loading.gif" lazyload></p>
-<p>上传成功, 图中标记的是镜像存放位置<br><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151029.png" srcset="/img/loading.gif" lazyload></p>
-<p>“local”和“local-lvm”存储空间的内容说明：</p>
-<ul>
-<li>local：VZDump备份文件, ISO镜像, 容器模板</li>
-<li>local-lvm：磁盘映像, 容器</li>
+                <h2 id="安装adb和fastboot"><a href="#安装adb和fastboot" class="headerlink" title="安装adb和fastboot"></a>安装adb和fastboot</h2><p><a target="_blank" rel="noopener" href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">下载地址</a></p>
+<p>设置环境变量</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181052.png" srcset="/img/loading.gif" lazyload></p>
+<p>确保你的电脑已经配置好<code>adb</code> 和<code>fastboot</code> 的环境变量.</p>
+<blockquote>
+<p>原文: <a target="_blank" rel="noopener" href="https://wiki.lineageos.org/adb_fastboot_guide.html">https://wiki.lineageos.org/adb_fastboot_guide.html</a></p>
+</blockquote>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181056.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="解锁手机"><a href="#解锁手机" class="headerlink" title="解锁手机"></a>解锁手机</h2><h3 id="下载解锁工具"><a href="#下载解锁工具" class="headerlink" title="下载解锁工具"></a>下载解锁工具</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.miui.com/unlock/index.html">http://www.miui.com/unlock/index.html</a></p>
+</blockquote>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181058.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="开启开发者选项"><a href="#开启开发者选项" class="headerlink" title="开启开发者选项"></a>开启开发者选项</h3><p><code>「设置」</code>-&gt; <code>「全部参数」</code>-&gt; 连续点击<code>「MIUI 版本」</code>（直至开启开发者选项即可）</p>
+<h3 id="设备绑定小米账号"><a href="#设备绑定小米账号" class="headerlink" title="设备绑定小米账号"></a>设备绑定小米账号</h3><p><code>「设置」</code>-&gt;<code>「更多设置」</code> -&gt;<code>「开发者选项」</code> -&gt;<code>「设备解锁状态」</code>（登录小米账号）</p>
+<h3 id="开启USB调试"><a href="#开启USB调试" class="headerlink" title="开启USB调试"></a>开启USB调试</h3><p><code>「设置」</code>-&gt;<code>「更多设置」</code>-&gt;<code>「开发者选项」</code>-&gt;<code>「USB调试」</code>（开启即可）。</p>
+<h3 id="使手机进入-fastboot-模式"><a href="#使手机进入-fastboot-模式" class="headerlink" title="使手机进入  fastboot 模式"></a>使手机进入  fastboot 模式</h3><p><strong>方法1</strong>, 电脑打开 <code>cmd（命令提示符）</code>，执行下列命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb reboot bootloader<br></code></pre></td></tr></table></figure>
+
+<p><strong>方法2,</strong> 手机关机, 然后同时长按<code>音量减</code> 和  <code>电源</code>进入模式 </p>
+<h3 id="在电脑里，运行小米官方解锁工具"><a href="#在电脑里，运行小米官方解锁工具" class="headerlink" title="在电脑里，运行小米官方解锁工具"></a>在电脑里，运行小米官方解锁工具</h3><p>解压完后，文件夹里找到 <strong>miflash_unlock.exe</strong>，双击运行即可。登录账号依照提示完成解锁即可。</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181102.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="刷ROM"><a href="#刷ROM" class="headerlink" title="刷ROM"></a>刷ROM</h2><blockquote>
+<p>官网原文: <a target="_blank" rel="noopener" href="https://wiki.lineageos.org/devices/onclite/install">https://wiki.lineageos.org/devices/onclite/install</a></p>
+</blockquote>
+<h3 id="1-下载这两个东西"><a href="#1-下载这两个东西" class="headerlink" title="1. 下载这两个东西"></a>1. 下载这两个东西</h3><blockquote>
+<p>下载地址 <a target="_blank" rel="noopener" href="https://download.lineageos.org/onclite">https://download.lineageos.org/onclite</a></p>
+</blockquote>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181112.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-手机开启USB调试"><a href="#2-手机开启USB调试" class="headerlink" title="2. 手机开启USB调试"></a>2. 手机开启USB调试</h3><p><code>「设置」</code>-&gt; <code>「全部参数」</code>-&gt; 连续点击<code>「MIUI 版本」</code>（直至开启开发者选项即可）</p>
+<p><code>「设置」</code>-&gt;<code>「更多设置」</code>-&gt;<code>「开发者选项」</code>-&gt;<code>「USB调试」</code>（开启即可）。</p>
+<h3 id="3-USB数据线连接手机和电脑"><a href="#3-USB数据线连接手机和电脑" class="headerlink" title="3. USB数据线连接手机和电脑"></a>3. USB数据线连接手机和电脑</h3><h3 id="4-电脑执行命令"><a href="#4-电脑执行命令" class="headerlink" title="4. 电脑执行命令"></a>4. 电脑执行命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb reboot bootloader<br></code></pre></td></tr></table></figure>
+
+<p>一旦手机处于快速启动模式，请通过键入以下内容<code>验证您的PC是否找到它</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">fastboot devices<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-闪存恢复到您的设备"><a href="#5-闪存恢复到您的设备" class="headerlink" title="5. 闪存恢复到您的设备"></a>5. 闪存恢复到您的设备</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181116.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">fastboot</span> flash recovery  xxxxx.img    <br></code></pre></td></tr></table></figure>
+
+<h3 id="6-断开数据线-手机同时按音量-和电源建-有点难进入-要尝试多次"><a href="#6-断开数据线-手机同时按音量-和电源建-有点难进入-要尝试多次" class="headerlink" title="6. 断开数据线, 手机同时按音量+和电源建 (有点难进入,要尝试多次)"></a>6. 断开数据线, 手机同时按<strong>音量+<strong>和</strong>电源建</strong> (有点难进入,要尝试多次)</h3><p>成功的话, 如图所示</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181119.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="7-清除数据"><a href="#7-清除数据" class="headerlink" title="7 清除数据"></a>7 清除数据</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181122.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181124.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="8-插入数据线-刷ROM"><a href="#8-插入数据线-刷ROM" class="headerlink" title="8. 插入数据线, 刷ROM"></a>8. 插入数据线, 刷ROM</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181127.png" srcset="/img/loading.gif" lazyload></p>
+<p>选择<code>Apply from ADB</code></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181129.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181131.png" srcset="/img/loading.gif" lazyload></p>
+<p>电脑执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb sideload lineage-18.1-20210613-nightly-onclite-signed.zip   <br></code></pre></td></tr></table></figure>
+
+<h3 id="9-完成"><a href="#9-完成" class="headerlink" title="9 完成"></a>9 完成</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181134.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181137.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181139.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181141.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ericclose.github.io/Install-LineageOS-on-sagit.html">2020年 小米6 刷机 LineageOS 17.1 Official</a></li>
 </ul>
-<p>其中local-lvm不能上传文件，只能用“qm importdisk”命令把镜像转换成虚拟磁盘并存储在里面（或创建磁盘和磁盘映射），这样做比上传到root根目录更便捷而且便于管理。</p>
-<h3 id="2、查看上传镜像的目录："><a href="#2、查看上传镜像的目录：" class="headerlink" title="2、查看上传镜像的目录："></a>2、查看上传镜像的目录：</h3><p>点击”日志”</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151031.png" srcset="/img/loading.gif" lazyload></p>
-<p>查看刚才上传文件的日志</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151035.png" srcset="/img/loading.gif" lazyload></p>
-<p>看到刚才上传的文件存放位置</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151039.png" srcset="/img/loading.gif" lazyload></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/var/lib/vz/template/iso/openwrt-buddha-version-v1_2023_-x86-64-generic-squashfs-uefi.img<br></code></pre></td></tr></table></figure>
-
-<h3 id="3、把镜像转成虚拟磁盘并导入到虚拟机"><a href="#3、把镜像转成虚拟磁盘并导入到虚拟机" class="headerlink" title="3、把镜像转成虚拟磁盘并导入到虚拟机"></a>3、把镜像转成虚拟磁盘并导入到虚拟机</h3><p>选择“pve”根节点 &gt; shell &gt; 输入以下命令并回车：</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151041.png" srcset="/img/loading.gif" lazyload></p>
-<p>把镜像转成虚拟磁盘并导入到虚拟机</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151044.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151116.png" srcset="/img/loading.gif" lazyload></p>
-<p>命令模板</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">qm importdisk 虚拟机<span class="hljs-built_in">id</span> 镜像位置 local-lvm<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>qm importdisk是PVE导入磁盘到虚拟机的工具，</li>
-<li>虚拟机id: 虚拟机的编号，</li>
-<li>镜像位置: 是刚才上传Openwrt镜像的完整目录，</li>
-<li>‘local-lvm’是PVE储存虚拟磁盘的存储空间。</li>
-</ul>
-<p>例如:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">qm importdisk 102 /var/lib/vz/template/iso/openwrt-buddha-version-v1_2023_-x86-64-generic-squashfs-uefi.img local-lvm<br></code></pre></td></tr></table></figure>
-
-<h3 id="4、修改磁盘属性"><a href="#4、修改磁盘属性" class="headerlink" title="4、修改磁盘属性"></a>4、修改磁盘属性</h3><p>导入成功后,在openwrt虚拟机”硬件”里面可以见到”未使用的磁盘0”。需要修改磁盘属性</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151047.png" srcset="/img/loading.gif" lazyload></p>
-<p>修改磁盘属性</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151049.png" srcset="/img/loading.gif" lazyload></p>
-<p>改为SATA</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151214.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151050.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="5、修改虚拟机的引导顺序"><a href="#5、修改虚拟机的引导顺序" class="headerlink" title="5、修改虚拟机的引导顺序"></a>5、修改虚拟机的引导顺序</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151125.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151052.png" srcset="/img/loading.gif" lazyload></p>
-<p>点击OK, 完成设置</p>
-<h3 id="6、启动虚拟机-测试正常运行-到此-完成安装"><a href="#6、启动虚拟机-测试正常运行-到此-完成安装" class="headerlink" title="6、启动虚拟机, 测试正常运行. 到此,完成安装."></a>6、启动虚拟机, 测试正常运行. 到此,完成安装.</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151054.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="四-登录openwrt命令行-修改ip地址"><a href="#四-登录openwrt命令行-修改ip地址" class="headerlink" title="四. 登录openwrt命令行,  修改ip地址"></a>四. 登录openwrt命令行,  修改ip地址</h2><p>选中openwrt虚拟机, 点击”<em>控制台”修改ip地址</em></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151055.png" srcset="/img/loading.gif" lazyload></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/config/network<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151057.png" srcset="/img/loading.gif" lazyload></p>
-<p>把 <code>option gateway &#39;192.168.5.1&#39;</code>改成自己需要的IP地址，如192.168.100.2，再按ESC键，再按：wq保存退出，重启即可。</p>
-<h2 id="五-用浏览器登录Openwrt"><a href="#五-用浏览器登录Openwrt" class="headerlink" title="五. 用浏览器登录Openwrt"></a>五. 用浏览器登录Openwrt</h2><p>在浏览器中输入openwrt的<code>ip地址</code>, 即可登录openwrt</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151059.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151101.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230129151103.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -379,7 +360,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%98%E8%85%BE%E8%99%9A%E6%8B%9F%E6%9C%BAPVE/" class="category-chain-item">折腾虚拟机PVE</a>
+  <a href="/categories/%E6%89%8B%E6%9C%BA/" class="category-chain-item">手机</a>
   
   
 
@@ -394,11 +375,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="print-no-link">#虚拟机</a>
+        <a href="/tags/%E6%89%8B%E6%9C%BA%E5%88%B7ROM/" class="print-no-link">#手机刷ROM</a>
       
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+        <a href="/tags/%E7%BA%A2%E7%B1%B3%E6%89%8B%E6%9C%BA/" class="print-no-link">#红米手机</a>
       
-        <a href="/tags/PVE/" class="print-no-link">#PVE</a>
+        <a href="/tags/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA/" class="print-no-link">#小米手机</a>
+      
+        <a href="/tags/%E7%BA%A2%E7%B1%B37/" class="print-no-link">#红米7</a>
       
     </div>
   
@@ -410,8 +393,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</div>
-      <div>https://blog.wingogo.top/posts/390902fb9215/</div>
+      <div>红米7手机刷LineageOS系统</div>
+      <div>https://blog.wingogo.top/posts/2eaab60b6bd4/</div>
     </div>
     <div class="license-meta">
       
@@ -423,7 +406,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月29日</div>
+          <div>2021年7月2日</div>
         </div>
       
       
@@ -455,9 +438,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/97cc233e0946/" title="交互式git rebase压缩提交记录,合并提交记录">
+                      <a href="/posts/bfaf119ec0c6/" title="推荐两款虚拟机软件">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">交互式git rebase压缩提交记录,合并提交记录</span>
+                        <span class="hidden-mobile">推荐两款虚拟机软件</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -465,8 +448,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/12d21105afaa/" title="折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器">
-                        <span class="hidden-mobile">折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器</span>
+                      <a href="/posts/6ad9f01285a1/" title="教你用Hexo创建个人博客">
+                        <span class="hidden-mobile">教你用Hexo创建个人博客</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -16,16 +16,16 @@
   <meta name="author" content="夏日雪糕">
   <meta name="keywords" content="海克斯科技,wingogo">
   
-    <meta name="description" content="0.查看LXC容器模板点击模板, 可以查看有哪些LXC模板可以下载.    1.创建lxc容器   CT ID: 默认即可  主机名: lxc容器名称  密码: lxc系统登录密码. 可以理解为虚拟出来的linux系统登录密码  确认密码: 需要和密码一致   选择系统 设置系统磁盘大小 设置CPU核心数量 设置内存大小 设置网络设置静态IP和网关取消防火墙  IPv4&#x2F;CIDR:  填写IP地址">
+    <meta name="description" content="PVE是什么Proxmox VE（以下简称为PVE），是一个款开源虚拟化管理软件，和ESXI类似，简单的说就是用来开设和管理虚拟机的。 轻量、功能丰富和不挑硬件是PVE相比ESXi最大的优势，只后面配置虚拟机的过程中需要使用一些命令行，但是坑比EXSi少很多，总体过程轻松愉快，家用环境强烈推荐PVE。 系统要求PVE硬件方面要求最低64位CPU，内存1GB以上，附加分配给客户机所需的内存，CPU虚">
 <meta property="og:type" content="article">
-<meta property="og:title" content="折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器">
-<meta property="og:url" content="https://blog.wingogo.top/posts/12d21105afaa/index.html">
+<meta property="og:title" content="折腾PVE虚拟机系列: 01.安装PVE">
+<meta property="og:url" content="https://blog.wingogo.top/posts/7ab3c7c5ea19/index.html">
 <meta property="og:site_name" content="夏日雪糕">
-<meta property="og:description" content="0.查看LXC容器模板点击模板, 可以查看有哪些LXC模板可以下载.    1.创建lxc容器   CT ID: 默认即可  主机名: lxc容器名称  密码: lxc系统登录密码. 可以理解为虚拟出来的linux系统登录密码  确认密码: 需要和密码一致   选择系统 设置系统磁盘大小 设置CPU核心数量 设置内存大小 设置网络设置静态IP和网关取消防火墙  IPv4&#x2F;CIDR:  填写IP地址">
+<meta property="og:description" content="PVE是什么Proxmox VE（以下简称为PVE），是一个款开源虚拟化管理软件，和ESXI类似，简单的说就是用来开设和管理虚拟机的。 轻量、功能丰富和不挑硬件是PVE相比ESXi最大的优势，只后面配置虚拟机的过程中需要使用一些命令行，但是坑比EXSi少很多，总体过程轻松愉快，家用环境强烈推荐PVE。 系统要求PVE硬件方面要求最低64位CPU，内存1GB以上，附加分配给客户机所需的内存，CPU虚">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
-<meta property="article:published_time" content="2023-01-28T12:57:01.000Z">
-<meta property="article:modified_time" content="2023-09-21T05:20:49.096Z">
+<meta property="article:published_time" content="2022-12-04T11:52:00.000Z">
+<meta property="article:modified_time" content="2023-12-02T05:15:03.722Z">
 <meta property="article:author" content="夏日雪糕">
 <meta property="article:tag" content="虚拟机">
 <meta property="article:tag" content="Linux">
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器 - 夏日雪糕</title>
+  <title>折腾PVE虚拟机系列: 01.安装PVE - 夏日雪糕</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +209,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器"></span>
+            <span id="subtitle" data-typed-text="折腾PVE虚拟机系列: 01.安装PVE"></span>
           
         </div>
 
@@ -220,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-28 20:57" pubdate>
-          2023年1月28日 晚上
+        <time datetime="2022-12-04 19:52" pubdate>
+          2022年12月4日 晚上
         </time>
       </span>
     
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.4k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          11 分钟
+          12 分钟
         
       </span>
     
@@ -280,85 +280,99 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器</h1>
+            <h1 id="seo-header">折腾PVE虚拟机系列: 01.安装PVE</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="0-查看LXC容器模板"><a href="#0-查看LXC容器模板" class="headerlink" title="0.查看LXC容器模板"></a>0.查看LXC容器模板</h2><p>点击模板, 可以查看有哪些LXC模板可以下载. </p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205125.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205129.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="1-创建lxc容器"><a href="#1-创建lxc容器" class="headerlink" title="1.创建lxc容器"></a>1.创建lxc容器</h2><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205131.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205133.png" srcset="/img/loading.gif" lazyload></p>
+                <h2 id="PVE是什么"><a href="#PVE是什么" class="headerlink" title="PVE是什么"></a>PVE是什么</h2><p><code>Proxmox VE（以下简称为PVE）</code>，是一个款开源虚拟化管理软件，和ESXI类似，简单的说就是用来开设和管理虚拟机的。</p>
+<p>轻量、功能丰富和不挑硬件是PVE相比ESXi最大的优势，只后面配置虚拟机的过程中需要使用一些命令行，但是坑比EXSi少很多，总体过程轻松愉快，家用环境强烈推荐PVE。</p>
+<h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>PVE硬件方面要求最低64位CPU，内存1GB以上，附加分配给客户机所需的内存，CPU虚拟化技术不是必须的，但是最好有。J3455主板加个千兆网卡跑软路由和黑群晖是够用的，内网能跑满千兆。</p>
 <ul>
-<li><p><code>CT ID</code>: 默认即可</p>
+<li>CPU: 64bit (Intel EMT64 or AMD64)</li>
+<li>Intel VT/AMD-V capable CPU/Mainboard for KVM full virtualization support</li>
+<li>RAM: 1 GB RAM, plus additional RAM used for guests</li>
+</ul>
+<h2 id="PVE下载地址"><a href="#PVE下载地址" class="headerlink" title="PVE下载地址"></a>PVE下载地址</h2><p>官方网站下载地址：<a target="_blank" rel="noopener" href="https://www.proxmox.com/en/downloads/category/iso-images-pve">https://www.proxmox.com/en/downloads/category/iso-images-pve</a></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220927.png" srcset="/img/loading.gif" lazyload alt="image-20221204201301077"></p>
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><p>以下教程是教大家如何把PVE安装到物理机上.</p>
+<p>我喜欢用<code>Ventoy</code>,  所以以下教程是基于U盘使用Ventoy启动iso文件安装.</p>
+<h3 id="1-前提准备"><a href="#1-前提准备" class="headerlink" title="1. 前提准备"></a>1. 前提准备</h3><ul>
+<li><p>准备一个U盘  (建议不低于8G容量)</p>
 </li>
-<li><p><code>主机名</code>: lxc容器名称</p>
-</li>
-<li><p><code>密码</code>: lxc系统登录密码. 可以理解为虚拟出来的linux系统登录密码</p>
-</li>
-<li><p><code>确认密码</code>: 需要和密码一致</p>
+<li><p>下载<code>Ventoy</code>: <a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/download.html">https://www.ventoy.net/cn/download.html</a></p>
 </li>
 </ul>
-<h3 id="选择系统"><a href="#选择系统" class="headerlink" title="选择系统"></a>选择系统</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205136.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="设置系统磁盘大小"><a href="#设置系统磁盘大小" class="headerlink" title="设置系统磁盘大小"></a>设置系统磁盘大小</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205141.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="设置CPU核心数量"><a href="#设置CPU核心数量" class="headerlink" title="设置CPU核心数量"></a>设置CPU核心数量</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205138.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="设置内存大小"><a href="#设置内存大小" class="headerlink" title="设置内存大小"></a>设置内存大小</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205146.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="设置网络"><a href="#设置网络" class="headerlink" title="设置网络"></a>设置网络</h3><p>设置静态IP和网关<br>取消防火墙<br><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205212.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220934.png" srcset="/img/loading.gif" lazyload alt="image-20221204201856742"></p>
 <ul>
-<li><code>IPv4/CIDR</code>:  填写IP地址, 例如: 192.168.80.7/24</li>
-<li><code>网关(IPv4)</code>: 填写网关. 如果不知道填什么,填主路由IP地址</li>
+<li>下载<code>微PE</code>: <a target="_blank" rel="noopener" href="https://www.wepe.com.cn/download.html">https://www.wepe.com.cn/download.html</a><br><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220938.png" srcset="/img/loading.gif" lazyload alt="image-20221204202028540"></li>
+<li>下载<code>pve.iso</code>(参考上面<strong>PVE下载地址</strong>)</li>
 </ul>
-<h3 id="设置DNS"><a href="#设置DNS" class="headerlink" title="设置DNS"></a>设置DNS</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205147.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="如果确定配置-点击完成"><a href="#如果确定配置-点击完成" class="headerlink" title="如果确定配置,点击完成"></a>如果确定配置,点击完成</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205214.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="2-解决Ubuntu的中文乱码问题"><a href="#2-解决Ubuntu的中文乱码问题" class="headerlink" title="2. 解决Ubuntu的中文乱码问题"></a>2. 解决Ubuntu的中文乱码问题</h2><ol>
-<li>安装中文支持包<code>language-pack-zh-hans</code></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install language-pack-zh-hans<br></code></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>修改<code>/etc/environment</code>（在文件的末尾追加）：</li>
-</ol>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">LANG=&quot;zh_CN.UTF-8&quot;<br>LANGUAGE=&quot;zh_CN:zh:en_US:en&quot;<br></code></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>修改<code>/var/lib/locales/supported.d/local</code>(没有这个文件就新建，同样在末尾追加)：</li>
-</ol>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs txt">en_US.UTF-8 UTF-8<br>zh_CN.UTF-8 UTF-8<br>zh_CN.GBK GBK<br>zh_CN GB2312<br></code></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>最后，执行命令：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo locale-gen<br></code></pre></td></tr></table></figure>
-
-<p>对于中文乱码是空格的情况，安装中文字体解决。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming<br></code></pre></td></tr></table></figure>
-
-<h2 id="3-解决Linux-systemd-resolve占用53端口问题"><a href="#3-解决Linux-systemd-resolve占用53端口问题" class="headerlink" title="3. 解决Linux systemd-resolve占用53端口问题"></a>3. 解决Linux systemd-resolve占用53端口问题</h2><p>在Linux系统中有些软件（如：Dnsmasq解锁Netflix中的Dns等服务）可能要用到53的端口，但有些系统提示已使用（required port 53 already in use ）。</p>
-<p>查看53端口是不是被<code>systemd-resolved</code>占用了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netstat -tlunp | grep 53 <br></code></pre></td></tr></table></figure>
-
-<p>如果是，下面是解决方法可以试试看对你有没有帮助。</p>
-<ol>
-<li>先停用<code>systemd-resolved</code>服务</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl stop systemd-resolved<br></code></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>编辑<code>/etc/systemd/resolved.conf</code>文件</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/systemd/resolved.conf<br></code></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>换下面说明更改，然后按一下“esc”键，再输入“:wq”（不要输入引号），回车保存即可。</li>
-</ol>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Resolve]</span><br><span class="hljs-attr">DNS</span>=<span class="hljs-number">8.8</span>.<span class="hljs-number">8.8</span>  <span class="hljs-comment">#取消注释，增加dns</span><br><span class="hljs-comment">#FallbackDNS=</span><br><span class="hljs-comment">#Domains=</span><br><span class="hljs-comment">#LLMNR=no</span><br><span class="hljs-comment">#MulticastDNS=no</span><br><span class="hljs-comment">#DNSSEC=no</span><br><span class="hljs-comment">#Cache=yes</span><br><span class="hljs-attr">DNSStubListener</span>=<span class="hljs-literal">no</span>  <span class="hljs-comment">#取消注释，把yes改为no</span><br></code></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>最后运行下面命令即可。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf<br></code></pre></td></tr></table></figure>
-
+<h3 id="2-在U盘安装Ventoy"><a href="#2-在U盘安装Ventoy" class="headerlink" title="2. 在U盘安装Ventoy"></a>2. 在U盘安装Ventoy</h3><blockquote>
+<p><strong>注意:  会格式化U盘里面的东西. 如果U盘有重要数据,请提前备份好</strong></p>
+</blockquote>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220940.png" srcset="/img/loading.gif" lazyload alt="image-20221204202738000"></p>
+<ul>
+<li><code>设备</code>选择: U盘</li>
+<li>点击<code>安装</code> </li>
+</ul>
+<h3 id="3-制作微PE-iso"><a href="#3-制作微PE-iso" class="headerlink" title="3. 制作微PE_iso"></a>3. 制作微PE_iso</h3><ul>
+<li><p>打开<code>微PE工具箱</code></p>
+</li>
+<li><p>选择<code>生成可启动ISO</code>,  生成微PE的iso文件.</p>
+</li>
+</ul>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220943.png" srcset="/img/loading.gif" lazyload alt="image-20221204203234093"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220945.png" srcset="/img/loading.gif" lazyload alt="image-20221204203435328"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220947.png" srcset="/img/loading.gif" lazyload alt="image-20221204203626877"></p>
+<h3 id="4-将iso文件放入U盘"><a href="#4-将iso文件放入U盘" class="headerlink" title="4. 将iso文件放入U盘"></a>4. 将iso文件放入U盘</h3><p>把<code>微PE</code>和<code>PVE</code>的iso文件放入安装Ventoy的U盘</p>
+<h3 id="5-把U盘插到工控机-设置开机读取U盘"><a href="#5-把U盘插到工控机-设置开机读取U盘" class="headerlink" title="5. 把U盘插到工控机, 设置开机读取U盘"></a>5. 把U盘插到工控机, 设置开机读取U盘</h3><p>把刚才制作好Ventoy的U盘插在工控机上.</p>
+<p>启动工控机,开机读取U盘</p>
+<p>以下图片,仅供参考.</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220949.png" srcset="/img/loading.gif" lazyload alt="image-20221204211748140"></p>
+<h3 id="6-使用微PE-格式化工控机的硬盘"><a href="#6-使用微PE-格式化工控机的硬盘" class="headerlink" title="6. 使用微PE,格式化工控机的硬盘"></a>6. 使用微PE,格式化工控机的硬盘</h3><p>进入Ventoy, 选择wepe.iso</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220952.png" srcset="/img/loading.gif" lazyload alt="image-20221204212109807"></p>
+<p>打开分区工具, 删除所有分区</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220954.png" srcset="/img/loading.gif" lazyload alt="image-20221204212655300"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221001.png" srcset="/img/loading.gif" lazyload alt="image-20221204212911828"></p>
+<p>删除完所有分区,记得点击<code>保存更改</code></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220956.png" srcset="/img/loading.gif" lazyload alt="image-20221204213001421"></p>
+<p>之后启动工控机</p>
+<h3 id="7-在Ventoy选择pve-iso-安装PVE"><a href="#7-在Ventoy选择pve-iso-安装PVE" class="headerlink" title="7. 在Ventoy选择pve.iso, 安装PVE"></a>7. 在Ventoy选择pve.iso, 安装PVE</h3><p>进入Ventoy界面,选择pve.iso</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221006.png" srcset="/img/loading.gif" lazyload alt="image-20221204212109807"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221011.png" srcset="/img/loading.gif" lazyload alt="image-20221204213804110"></p>
+<h4 id="7-1-选择硬盘"><a href="#7-1-选择硬盘" class="headerlink" title="7.1 选择硬盘"></a>7.1 选择硬盘</h4><p>选择把PVE安装到那块硬盘.(我的工控机只有一块硬盘, 我这里选择默认)</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221023.png" srcset="/img/loading.gif" lazyload alt="image-20221204213853948"></p>
+<h4 id="7-2-选择时间和地区"><a href="#7-2-选择时间和地区" class="headerlink" title="7.2 选择时间和地区"></a>7.2 选择时间和地区</h4><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221026.png" srcset="/img/loading.gif" lazyload alt="image-20221204214042494"></p>
+<h4 id="7-3-设置PVE密码"><a href="#7-3-设置PVE密码" class="headerlink" title="7.3 设置PVE密码"></a>7.3 设置PVE密码</h4><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221033.png" srcset="/img/loading.gif" lazyload alt="image-20221204214120644"></p>
+<ul>
+<li>password 密码</li>
+<li>comfirm 确认密码</li>
+<li>email 邮箱是企业服务邮箱. 但个人使用一般用不到. 所以随便填写就好<h4 id="7-4-设置网口"><a href="#7-4-设置网口" class="headerlink" title="7.4 设置网口"></a>7.4 设置网口</h4></li>
+</ul>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221036.png" srcset="/img/loading.gif" lazyload alt="image-20221204214404925"></p>
+<ul>
+<li>mangement interface: 管理网口. 默认现在工控插着网线的网口.(我的工控机只插了一个网口)</li>
+<li>Hosename: 域名. 之后可以通过域名访问pve</li>
+<li>id address: 工控机ip地址</li>
+<li>getway: 网关, (一般设置主路由ip)</li>
+<li>dns server: dns服务器 (一般设置主路由ip)</li>
+</ul>
+<h4 id="7-5-之后一路下一步-安装PVE系统"><a href="#7-5-之后一路下一步-安装PVE系统" class="headerlink" title="7.5 之后一路下一步,安装PVE系统"></a>7.5 之后一路<code>下一步</code>,安装PVE系统</h4><h4 id="7-6-安装成功"><a href="#7-6-安装成功" class="headerlink" title="7.6 安装成功"></a>7.6 安装成功</h4><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221040.png" srcset="/img/loading.gif" lazyload alt="image-20221204215144157"></p>
+<h2 id="使用浏览器访问PVE"><a href="#使用浏览器访问PVE" class="headerlink" title="使用浏览器访问PVE"></a>使用浏览器访问PVE</h2><p>pve管理页面的地址格式<code>https://ip:8006/</code></p>
+<p>由于我设置pve的访问地址是192.168.50.5, 所以我访问pve地址是<a target="_blank" rel="noopener" href="https://192.168.50.5:8006/">https://192.168.50.5:8006/</a></p>
+<blockquote>
+<p>注意: 第一次打开pve地址一定要输入https开头的地址</p>
+</blockquote>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221205093445.png" srcset="/img/loading.gif" lazyload alt="image-20221205093211780"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221205093441.png" srcset="/img/loading.gif" lazyload alt="image-20221205093236231"></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221205093755.png" srcset="/img/loading.gif" lazyload alt="image-20221204215812935"></p>
+<ul>
+<li><p>账号是<code>root</code></p>
+</li>
+<li><p>密码是刚才设置的<code>pve密码</code></p>
+</li>
+</ul>
 
                 
               </div>
@@ -408,8 +422,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器</div>
-      <div>https://blog.wingogo.top/posts/12d21105afaa/</div>
+      <div>折腾PVE虚拟机系列: 01.安装PVE</div>
+      <div>https://blog.wingogo.top/posts/7ab3c7c5ea19/</div>
     </div>
     <div class="license-meta">
       
@@ -421,7 +435,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月28日</div>
+          <div>2022年12月4日</div>
         </div>
       
       
@@ -453,9 +467,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/390902fb9215/" title="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机">
+                      <a href="/posts/5797774afeae/" title="折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</span>
+                        <span class="hidden-mobile">折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -463,8 +477,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/ce6417da4441/" title="折腾PVE虚拟机系列: 01.安装PVE">
-                        <span class="hidden-mobile">折腾PVE虚拟机系列: 01.安装PVE</span>
+                      <a href="/posts/1d57a4fa1ca3/" title="批量压缩图片软件Imagine">
+                        <span class="hidden-mobile">批量压缩图片软件Imagine</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

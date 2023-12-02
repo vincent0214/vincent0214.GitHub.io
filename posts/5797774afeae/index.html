@@ -16,29 +16,28 @@
   <meta name="author" content="夏日雪糕">
   <meta name="keywords" content="海克斯科技,wingogo">
   
-    <meta name="description" content="安装adb和fastboot下载地址 设置环境变量  确保你的电脑已经配置好adb 和fastboot 的环境变量.  原文: https:&#x2F;&#x2F;wiki.lineageos.org&#x2F;adb_fastboot_guide.html   解锁手机下载解锁工具 http:&#x2F;&#x2F;www.miui.com&#x2F;unlock&#x2F;index.html   开启开发者选项「设置」-&gt; 「全部参数」-&gt; 连续点">
+    <meta name="description" content="0.查看LXC容器模板点击模板, 可以查看有哪些LXC模板可以下载.    1.创建lxc容器   CT ID: 默认即可  主机名: lxc容器名称  密码: lxc系统登录密码. 可以理解为虚拟出来的linux系统登录密码  确认密码: 需要和密码一致   选择系统 设置系统磁盘大小 设置CPU核心数量 设置内存大小 设置网络设置静态IP和网关取消防火墙  IPv4&#x2F;CIDR:  填写IP地址">
 <meta property="og:type" content="article">
-<meta property="og:title" content="红米7手机刷LineageOS系统">
-<meta property="og:url" content="https://blog.wingogo.top/posts/e914c109b19c/index.html">
+<meta property="og:title" content="折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器">
+<meta property="og:url" content="https://blog.wingogo.top/posts/5797774afeae/index.html">
 <meta property="og:site_name" content="夏日雪糕">
-<meta property="og:description" content="安装adb和fastboot下载地址 设置环境变量  确保你的电脑已经配置好adb 和fastboot 的环境变量.  原文: https:&#x2F;&#x2F;wiki.lineageos.org&#x2F;adb_fastboot_guide.html   解锁手机下载解锁工具 http:&#x2F;&#x2F;www.miui.com&#x2F;unlock&#x2F;index.html   开启开发者选项「设置」-&gt; 「全部参数」-&gt; 连续点">
+<meta property="og:description" content="0.查看LXC容器模板点击模板, 可以查看有哪些LXC模板可以下载.    1.创建lxc容器   CT ID: 默认即可  主机名: lxc容器名称  密码: lxc系统登录密码. 可以理解为虚拟出来的linux系统登录密码  确认密码: 需要和密码一致   选择系统 设置系统磁盘大小 设置CPU核心数量 设置内存大小 设置网络设置静态IP和网关取消防火墙  IPv4&#x2F;CIDR:  填写IP地址">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png">
-<meta property="article:published_time" content="2021-07-02T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-21T05:20:49.097Z">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
+<meta property="article:published_time" content="2023-01-28T12:57:01.000Z">
+<meta property="article:modified_time" content="2023-09-21T05:20:49.096Z">
 <meta property="article:author" content="夏日雪糕">
-<meta property="article:tag" content="手机刷ROM">
-<meta property="article:tag" content="红米手机">
-<meta property="article:tag" content="小米手机">
-<meta property="article:tag" content="红米7">
+<meta property="article:tag" content="虚拟机">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="PVE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>红米7手机刷LineageOS系统 - 夏日雪糕</title>
+  <title>折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器 - 夏日雪糕</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,13 +203,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702180935.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="红米7手机刷LineageOS系统"></span>
+            <span id="subtitle" data-typed-text="折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器"></span>
           
         </div>
 
@@ -221,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-07-02 18:00" pubdate>
-          2021年7月2日 晚上
+        <time datetime="2023-01-28 20:57" pubdate>
+          2023年1月28日 晚上
         </time>
       </span>
     
@@ -233,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          989 字
+          1.2k 字
         
       </span>
     
@@ -244,7 +243,7 @@
         
         
         
-          9 分钟
+          11 分钟
         
       </span>
     
@@ -281,67 +280,85 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">红米7手机刷LineageOS系统</h1>
+            <h1 id="seo-header">折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="安装adb和fastboot"><a href="#安装adb和fastboot" class="headerlink" title="安装adb和fastboot"></a>安装adb和fastboot</h2><p><a target="_blank" rel="noopener" href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">下载地址</a></p>
-<p>设置环境变量</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181052.png" srcset="/img/loading.gif" lazyload></p>
-<p>确保你的电脑已经配置好<code>adb</code> 和<code>fastboot</code> 的环境变量.</p>
-<blockquote>
-<p>原文: <a target="_blank" rel="noopener" href="https://wiki.lineageos.org/adb_fastboot_guide.html">https://wiki.lineageos.org/adb_fastboot_guide.html</a></p>
-</blockquote>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181056.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="解锁手机"><a href="#解锁手机" class="headerlink" title="解锁手机"></a>解锁手机</h2><h3 id="下载解锁工具"><a href="#下载解锁工具" class="headerlink" title="下载解锁工具"></a>下载解锁工具</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="http://www.miui.com/unlock/index.html">http://www.miui.com/unlock/index.html</a></p>
-</blockquote>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181058.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="开启开发者选项"><a href="#开启开发者选项" class="headerlink" title="开启开发者选项"></a>开启开发者选项</h3><p><code>「设置」</code>-&gt; <code>「全部参数」</code>-&gt; 连续点击<code>「MIUI 版本」</code>（直至开启开发者选项即可）</p>
-<h3 id="设备绑定小米账号"><a href="#设备绑定小米账号" class="headerlink" title="设备绑定小米账号"></a>设备绑定小米账号</h3><p><code>「设置」</code>-&gt;<code>「更多设置」</code> -&gt;<code>「开发者选项」</code> -&gt;<code>「设备解锁状态」</code>（登录小米账号）</p>
-<h3 id="开启USB调试"><a href="#开启USB调试" class="headerlink" title="开启USB调试"></a>开启USB调试</h3><p><code>「设置」</code>-&gt;<code>「更多设置」</code>-&gt;<code>「开发者选项」</code>-&gt;<code>「USB调试」</code>（开启即可）。</p>
-<h3 id="使手机进入-fastboot-模式"><a href="#使手机进入-fastboot-模式" class="headerlink" title="使手机进入  fastboot 模式"></a>使手机进入  fastboot 模式</h3><p><strong>方法1</strong>, 电脑打开 <code>cmd（命令提示符）</code>，执行下列命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb reboot bootloader<br></code></pre></td></tr></table></figure>
-
-<p><strong>方法2,</strong> 手机关机, 然后同时长按<code>音量减</code> 和  <code>电源</code>进入模式 </p>
-<h3 id="在电脑里，运行小米官方解锁工具"><a href="#在电脑里，运行小米官方解锁工具" class="headerlink" title="在电脑里，运行小米官方解锁工具"></a>在电脑里，运行小米官方解锁工具</h3><p>解压完后，文件夹里找到 <strong>miflash_unlock.exe</strong>，双击运行即可。登录账号依照提示完成解锁即可。</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181102.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="刷ROM"><a href="#刷ROM" class="headerlink" title="刷ROM"></a>刷ROM</h2><blockquote>
-<p>官网原文: <a target="_blank" rel="noopener" href="https://wiki.lineageos.org/devices/onclite/install">https://wiki.lineageos.org/devices/onclite/install</a></p>
-</blockquote>
-<h3 id="1-下载这两个东西"><a href="#1-下载这两个东西" class="headerlink" title="1. 下载这两个东西"></a>1. 下载这两个东西</h3><blockquote>
-<p>下载地址 <a target="_blank" rel="noopener" href="https://download.lineageos.org/onclite">https://download.lineageos.org/onclite</a></p>
-</blockquote>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181112.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-手机开启USB调试"><a href="#2-手机开启USB调试" class="headerlink" title="2. 手机开启USB调试"></a>2. 手机开启USB调试</h3><p><code>「设置」</code>-&gt; <code>「全部参数」</code>-&gt; 连续点击<code>「MIUI 版本」</code>（直至开启开发者选项即可）</p>
-<p><code>「设置」</code>-&gt;<code>「更多设置」</code>-&gt;<code>「开发者选项」</code>-&gt;<code>「USB调试」</code>（开启即可）。</p>
-<h3 id="3-USB数据线连接手机和电脑"><a href="#3-USB数据线连接手机和电脑" class="headerlink" title="3. USB数据线连接手机和电脑"></a>3. USB数据线连接手机和电脑</h3><h3 id="4-电脑执行命令"><a href="#4-电脑执行命令" class="headerlink" title="4. 电脑执行命令"></a>4. 电脑执行命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb reboot bootloader<br></code></pre></td></tr></table></figure>
-
-<p>一旦手机处于快速启动模式，请通过键入以下内容<code>验证您的PC是否找到它</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">fastboot devices<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-闪存恢复到您的设备"><a href="#5-闪存恢复到您的设备" class="headerlink" title="5. 闪存恢复到您的设备"></a>5. 闪存恢复到您的设备</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181116.png" srcset="/img/loading.gif" lazyload></p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">fastboot</span> flash recovery  xxxxx.img    <br></code></pre></td></tr></table></figure>
-
-<h3 id="6-断开数据线-手机同时按音量-和电源建-有点难进入-要尝试多次"><a href="#6-断开数据线-手机同时按音量-和电源建-有点难进入-要尝试多次" class="headerlink" title="6. 断开数据线, 手机同时按音量+和电源建 (有点难进入,要尝试多次)"></a>6. 断开数据线, 手机同时按<strong>音量+<strong>和</strong>电源建</strong> (有点难进入,要尝试多次)</h3><p>成功的话, 如图所示</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181119.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="7-清除数据"><a href="#7-清除数据" class="headerlink" title="7 清除数据"></a>7 清除数据</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181122.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181124.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="8-插入数据线-刷ROM"><a href="#8-插入数据线-刷ROM" class="headerlink" title="8. 插入数据线, 刷ROM"></a>8. 插入数据线, 刷ROM</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181127.png" srcset="/img/loading.gif" lazyload></p>
-<p>选择<code>Apply from ADB</code></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181129.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181131.png" srcset="/img/loading.gif" lazyload></p>
-<p>电脑执行以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb sideload lineage-18.1-20210613-nightly-onclite-signed.zip   <br></code></pre></td></tr></table></figure>
-
-<h3 id="9-完成"><a href="#9-完成" class="headerlink" title="9 完成"></a>9 完成</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181134.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181137.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181139.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210702181141.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://ericclose.github.io/Install-LineageOS-on-sagit.html">2020年 小米6 刷机 LineageOS 17.1 Official</a></li>
+                <h2 id="0-查看LXC容器模板"><a href="#0-查看LXC容器模板" class="headerlink" title="0.查看LXC容器模板"></a>0.查看LXC容器模板</h2><p>点击模板, 可以查看有哪些LXC模板可以下载. </p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205125.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205129.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-创建lxc容器"><a href="#1-创建lxc容器" class="headerlink" title="1.创建lxc容器"></a>1.创建lxc容器</h2><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205131.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205133.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><code>CT ID</code>: 默认即可</p>
+</li>
+<li><p><code>主机名</code>: lxc容器名称</p>
+</li>
+<li><p><code>密码</code>: lxc系统登录密码. 可以理解为虚拟出来的linux系统登录密码</p>
+</li>
+<li><p><code>确认密码</code>: 需要和密码一致</p>
+</li>
 </ul>
+<h3 id="选择系统"><a href="#选择系统" class="headerlink" title="选择系统"></a>选择系统</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205136.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="设置系统磁盘大小"><a href="#设置系统磁盘大小" class="headerlink" title="设置系统磁盘大小"></a>设置系统磁盘大小</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205141.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="设置CPU核心数量"><a href="#设置CPU核心数量" class="headerlink" title="设置CPU核心数量"></a>设置CPU核心数量</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205138.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="设置内存大小"><a href="#设置内存大小" class="headerlink" title="设置内存大小"></a>设置内存大小</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205146.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="设置网络"><a href="#设置网络" class="headerlink" title="设置网络"></a>设置网络</h3><p>设置静态IP和网关<br>取消防火墙<br><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205212.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><code>IPv4/CIDR</code>:  填写IP地址, 例如: 192.168.80.7/24</li>
+<li><code>网关(IPv4)</code>: 填写网关. 如果不知道填什么,填主路由IP地址</li>
+</ul>
+<h3 id="设置DNS"><a href="#设置DNS" class="headerlink" title="设置DNS"></a>设置DNS</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205147.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="如果确定配置-点击完成"><a href="#如果确定配置-点击完成" class="headerlink" title="如果确定配置,点击完成"></a>如果确定配置,点击完成</h3><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230128205214.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-解决Ubuntu的中文乱码问题"><a href="#2-解决Ubuntu的中文乱码问题" class="headerlink" title="2. 解决Ubuntu的中文乱码问题"></a>2. 解决Ubuntu的中文乱码问题</h2><ol>
+<li>安装中文支持包<code>language-pack-zh-hans</code></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install language-pack-zh-hans<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改<code>/etc/environment</code>（在文件的末尾追加）：</li>
+</ol>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">LANG=&quot;zh_CN.UTF-8&quot;<br>LANGUAGE=&quot;zh_CN:zh:en_US:en&quot;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改<code>/var/lib/locales/supported.d/local</code>(没有这个文件就新建，同样在末尾追加)：</li>
+</ol>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs txt">en_US.UTF-8 UTF-8<br>zh_CN.UTF-8 UTF-8<br>zh_CN.GBK GBK<br>zh_CN GB2312<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>最后，执行命令：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo locale-gen<br></code></pre></td></tr></table></figure>
+
+<p>对于中文乱码是空格的情况，安装中文字体解决。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt-get install fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-解决Linux-systemd-resolve占用53端口问题"><a href="#3-解决Linux-systemd-resolve占用53端口问题" class="headerlink" title="3. 解决Linux systemd-resolve占用53端口问题"></a>3. 解决Linux systemd-resolve占用53端口问题</h2><p>在Linux系统中有些软件（如：Dnsmasq解锁Netflix中的Dns等服务）可能要用到53的端口，但有些系统提示已使用（required port 53 already in use ）。</p>
+<p>查看53端口是不是被<code>systemd-resolved</code>占用了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">netstat -tlunp | grep 53 <br></code></pre></td></tr></table></figure>
+
+<p>如果是，下面是解决方法可以试试看对你有没有帮助。</p>
+<ol>
+<li>先停用<code>systemd-resolved</code>服务</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl stop systemd-resolved<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>编辑<code>/etc/systemd/resolved.conf</code>文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/systemd/resolved.conf<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>换下面说明更改，然后按一下“esc”键，再输入“:wq”（不要输入引号），回车保存即可。</li>
+</ol>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Resolve]</span><br><span class="hljs-attr">DNS</span>=<span class="hljs-number">8.8</span>.<span class="hljs-number">8.8</span>  <span class="hljs-comment">#取消注释，增加dns</span><br><span class="hljs-comment">#FallbackDNS=</span><br><span class="hljs-comment">#Domains=</span><br><span class="hljs-comment">#LLMNR=no</span><br><span class="hljs-comment">#MulticastDNS=no</span><br><span class="hljs-comment">#DNSSEC=no</span><br><span class="hljs-comment">#Cache=yes</span><br><span class="hljs-attr">DNSStubListener</span>=<span class="hljs-literal">no</span>  <span class="hljs-comment">#取消注释，把yes改为no</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>最后运行下面命令即可。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -360,7 +377,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%89%8B%E6%9C%BA/" class="category-chain-item">手机</a>
+  <a href="/categories/%E6%8A%98%E8%85%BE%E8%99%9A%E6%8B%9F%E6%9C%BAPVE/" class="category-chain-item">折腾虚拟机PVE</a>
   
   
 
@@ -375,13 +392,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%89%8B%E6%9C%BA%E5%88%B7ROM/" class="print-no-link">#手机刷ROM</a>
+        <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="print-no-link">#虚拟机</a>
       
-        <a href="/tags/%E7%BA%A2%E7%B1%B3%E6%89%8B%E6%9C%BA/" class="print-no-link">#红米手机</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
       
-        <a href="/tags/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA/" class="print-no-link">#小米手机</a>
-      
-        <a href="/tags/%E7%BA%A2%E7%B1%B37/" class="print-no-link">#红米7</a>
+        <a href="/tags/PVE/" class="print-no-link">#PVE</a>
       
     </div>
   
@@ -393,8 +408,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>红米7手机刷LineageOS系统</div>
-      <div>https://blog.wingogo.top/posts/e914c109b19c/</div>
+      <div>折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器</div>
+      <div>https://blog.wingogo.top/posts/5797774afeae/</div>
     </div>
     <div class="license-meta">
       
@@ -406,7 +421,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年7月2日</div>
+          <div>2023年1月28日</div>
         </div>
       
       
@@ -438,9 +453,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/ce0ede910d66/" title="推荐两款虚拟机软件">
+                      <a href="/posts/98f69bf77e98/" title="折腾PVE虚拟机系列: 03.创建Openwrt虚拟机">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">推荐两款虚拟机软件</span>
+                        <span class="hidden-mobile">折腾PVE虚拟机系列: 03.创建Openwrt虚拟机</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -448,8 +463,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/6ad9f01285a1/" title="教你用Hexo创建个人博客">
-                        <span class="hidden-mobile">教你用Hexo创建个人博客</span>
+                      <a href="/posts/7ab3c7c5ea19/" title="折腾PVE虚拟机系列: 01.安装PVE">
+                        <span class="hidden-mobile">折腾PVE虚拟机系列: 01.安装PVE</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

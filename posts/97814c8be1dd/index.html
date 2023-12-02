@@ -16,26 +16,28 @@
   <meta name="author" content="夏日雪糕">
   <meta name="keywords" content="海克斯科技,wingogo">
   
-    <meta name="description" content="|  原文出处: https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;25816758&#x2F;answer&#x2F;386246507 理想效果想要这种效果? 那就多用rebase 如何实现?0. 每次拉取远程服务器的代码,都用git pull --rebase 切换到master分支, 然后用git pull --rebase拉取远程分支的代码 切换到功能&#x2F;开发分支. 用git rebase mas">
+    <meta name="description" content="注意升级前, 需要提前备份你的虚拟机参考文章折腾虚拟机PVE系列05: 备份虚拟机 方式1: 命令行升级升级PVE到7.x最新版本备份apt源文件 1cp &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list.bak     修改apt源, 添加PVE7.x清华源 1vim &#x2F;etc&#x2F;apt&#x2F;sources.list   123456# 7.x清华源deb htt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何用Git进行协作开发">
-<meta property="og:url" content="https://blog.wingogo.top/posts/1d97ef4f47b7/index.html">
+<meta property="og:title" content="折腾虚拟机PVE系列: 04.升级PVE系统为8.x">
+<meta property="og:url" content="https://blog.wingogo.top/posts/97814c8be1dd/index.html">
 <meta property="og:site_name" content="夏日雪糕">
-<meta property="og:description" content="|  原文出处: https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;25816758&#x2F;answer&#x2F;386246507 理想效果想要这种效果? 那就多用rebase 如何实现?0. 每次拉取远程服务器的代码,都用git pull --rebase 切换到master分支, 然后用git pull --rebase拉取远程分支的代码 切换到功能&#x2F;开发分支. 用git rebase mas">
+<meta property="og:description" content="注意升级前, 需要提前备份你的虚拟机参考文章折腾虚拟机PVE系列05: 备份虚拟机 方式1: 命令行升级升级PVE到7.x最新版本备份apt源文件 1cp &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list.bak     修改apt源, 添加PVE7.x清华源 1vim &#x2F;etc&#x2F;apt&#x2F;sources.list   123456# 7.x清华源deb htt">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20220218121132.jpg">
-<meta property="article:published_time" content="2021-12-31T09:35:00.000Z">
-<meta property="article:modified_time" content="2023-09-21T05:20:49.095Z">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
+<meta property="article:published_time" content="2023-09-01T03:00:02.000Z">
+<meta property="article:modified_time" content="2023-09-21T05:20:49.097Z">
 <meta property="article:author" content="夏日雪糕">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="虚拟机">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="PVE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20220218121132.jpg">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>如何用Git进行协作开发 - 夏日雪糕</title>
+  <title>折腾虚拟机PVE系列: 04.升级PVE系统为8.x - 夏日雪糕</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,13 +203,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20220218121132.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="如何用Git进行协作开发"></span>
+            <span id="subtitle" data-typed-text="折腾虚拟机PVE系列: 04.升级PVE系统为8.x"></span>
           
         </div>
 
@@ -218,8 +220,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-12-31 17:35" pubdate>
-          2021年12月31日 下午
+        <time datetime="2023-09-01 11:00" pubdate>
+          2023年9月1日 上午
         </time>
       </span>
     
@@ -230,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          707 字
+          1.9k 字
         
       </span>
     
@@ -241,7 +243,7 @@
         
         
         
-          6 分钟
+          16 分钟
         
       </span>
     
@@ -278,25 +280,79 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">如何用Git进行协作开发</h1>
+            <h1 id="seo-header">折腾虚拟机PVE系列: 04.升级PVE系统为8.x</h1>
             
             
               <div class="markdown-body">
                 
-                <p>|  原文出处: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25816758/answer/386246507">https://www.zhihu.com/question/25816758/answer/386246507</a></p>
-<h2 id="理想效果"><a href="#理想效果" class="headerlink" title="理想效果"></a>理想效果</h2><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20211231183642.jpg" srcset="/img/loading.gif" lazyload><br>想要这种效果? 那就<strong>多用</strong><code>rebase</code></p>
-<h2 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现?"></a>如何实现?</h2><h3 id="0-每次拉取远程服务器的代码-都用git-pull-rebase"><a href="#0-每次拉取远程服务器的代码-都用git-pull-rebase" class="headerlink" title="0. 每次拉取远程服务器的代码,都用git pull --rebase"></a>0. 每次拉取远程服务器的代码,都用<code>git pull --rebase</code></h3><ul>
-<li>切换到<code>master分支</code>, 然后用<code>git pull --rebase</code>拉取远程分支的代码</li>
-<li>切换到<code>功能/开发</code>分支. 用<code>git rebase master</code>合并<code>master分支</code>的代码到当前分支</li>
+                <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>升级前, 需要提前备份你的虚拟机<br>参考文章<a href="">折腾虚拟机PVE系列05: 备份虚拟机</a></p>
+<h2 id="方式1-命令行升级"><a href="#方式1-命令行升级" class="headerlink" title="方式1: 命令行升级"></a>方式1: 命令行升级</h2><h3 id="升级PVE到7-x最新版本"><a href="#升级PVE到7-x最新版本" class="headerlink" title="升级PVE到7.x最新版本"></a>升级PVE到7.x最新版本</h3><p>备份apt源文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> /etc/apt/sources.list /etc/apt/sources.list.bak <br></code></pre></td></tr></table></figure>
+
+
+
+<p>修改apt源, 添加PVE7.x清华源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/apt/sources.list<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230901110031.webp" srcset="/img/loading.gif" lazyload alt="7.x清华源"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text"># 7.x清华源<br>deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free<br>deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free<br>deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free<br>deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>修改企业源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/apt/sources.list.d/pve-enterprise.list<br></code></pre></td></tr></table></figure>
+<p>把默认的源注释掉, 添加pve7.x清华源</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230901110027.webp" srcset="/img/loading.gif" lazyload alt="7.x清华源企业源"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text"># 7.x清华源<br>deb https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian bullseye pve-no-subscription<br></code></pre></td></tr></table></figure>
+
+
+
+<p>更新系统</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt update &amp;&amp; apt dist-upgrade -y<br></code></pre></td></tr></table></figure>
+
+<p>升级完成 重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">reboot<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="升级PVE7-x为8-x"><a href="#升级PVE7-x为8-x" class="headerlink" title="升级PVE7.x为8.x"></a>升级PVE7.x为8.x</h3><h4 id="设置8-x源"><a href="#设置8-x源" class="headerlink" title="设置8.x源"></a>设置8.x源</h4><p>编辑PVE8.x需要的源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/apt/sources.list<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230901110030.webp" srcset="/img/loading.gif" lazyload alt="编辑PVE8.x需要的源"></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text"># 8.x清华源<br>deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main contrib non-free non-free-firmware<br>deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main contrib non-free non-free-firmware<br>deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-backports main contrib non-free non-free-firmware<br><br># security updates<br>deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware<br></code></pre></td></tr></table></figure>
+
+
+
+<p>编辑企业源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/apt/sources.list.d/pve-enterprise.list<br></code></pre></td></tr></table></figure>
+<p>将7.x的企业源删除, 然后添加8.x的源</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text"># 8.x清华源<br>deb https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian/pve bookworm pve-no-subscription<br></code></pre></td></tr></table></figure>
+
+
+
+<p>修复更新时401错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription&quot;</span> &gt; /etc/apt/sources.list.d/ceph.list<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230901110039.webp" srcset="/img/loading.gif" lazyload alt="修复更新时401错误"></p>
+<p>下载官方授权加密证书</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg  -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230901110042.webp" srcset="/img/loading.gif" lazyload alt="下载官方授权加密证书"></p>
+<h4 id="升级PVE为8-x"><a href="#升级PVE为8-x" class="headerlink" title="升级PVE为8.x"></a>升级PVE为8.x</h4><p>验证升级是否有问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pve7to8 --full<br></code></pre></td></tr></table></figure>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20230901111749.png" srcset="/img/loading.gif" lazyload alt="Run the Proxmox 7 to 8 upgrade checklist program"></p>
+<ul>
+<li>FAILURES: 检查发现的错误, 有问题需要改进的地方.</li>
 </ul>
-<h3 id="1-新增-修改代码"><a href="#1-新增-修改代码" class="headerlink" title="1. 新增/修改代码"></a>1. 新增/修改代码</h3><h3 id="2-git-diff-检查代码变更"><a href="#2-git-diff-检查代码变更" class="headerlink" title="2. git diff 检查代码变更"></a>2. <code>git diff</code> 检查代码变更</h3><h3 id="3-git-add把修改加到index里"><a href="#3-git-add把修改加到index里" class="headerlink" title="3. git add把修改加到index里"></a>3. <code>git add</code>把修改加到index里</h3><h3 id="4-提交代码"><a href="#4-提交代码" class="headerlink" title="4. 提交代码"></a>4. 提交代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git commit -m <span class="hljs-string">&#x27;xxxxx&#x27;</span><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>commit到本地仓库，不同的公司有不同的commit模板。Follow公司标准，推荐commit message写详细，不要一句话modify xxx service。大家看git log知道你改了xxx service，但是具体改了什么，是改了接口，还是删了什么函数，麻烦说清楚。好的commit message应该交代清楚本次代码变更的背景，以及具体改了什么。以及，贴上你解决了什么需求，什么bug的连接（如果你们有需求管理平台和缺陷跟踪平台，类似Jira？</p>
-</blockquote>
-<h3 id="5-Code-Review"><a href="#5-Code-Review" class="headerlink" title="5. Code Review"></a>5. Code Review</h3><blockquote>
-<p>Code Review请Follow你们公司的标准。原则上Code Review的diff 不能太庞大，</p>
-</blockquote>
-<h3 id="6-重构一下commit"><a href="#6-重构一下commit" class="headerlink" title="6. 重构一下commit"></a>6. 重构一下commit</h3><p><code>git pull --rebase</code> # 获取线上代码, 解决conflict，merge之后的代码要重新发起CR<br><code>git log</code> # check the commit history<br><code>git rebase -i HEAD~N</code> # 重构提交 (这个rebase操作可以把多个commit合并)</p>
+<p>如果验证没有问题,可以升级pve</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt update <br>apt dist-upgrade<br></code></pre></td></tr></table></figure>
+<p>如果中途报错, 试下执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt-get update --fix-missing<br>apt dist-upgrade<br></code></pre></td></tr></table></figure>
+
+<h2 id="方式2-下载PVE-8-x系统镜像-重新安装系统"><a href="#方式2-下载PVE-8-x系统镜像-重新安装系统" class="headerlink" title="方式2: 下载PVE 8.x系统镜像,重新安装系统"></a>方式2: 下载PVE 8.x系统镜像,重新安装系统</h2><ol>
+<li>备份虚拟机</li>
+<li>参考<a href="">折腾PVE虚拟机系列: 01.安装PVE</a>到PVE官方网站下载8.x版本镜像, 重新安装即可</li>
+</ol>
 
                 
               </div>
@@ -315,7 +371,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Git%E7%AC%94%E8%AE%B0/" class="category-chain-item">Git笔记</a>
+  <a href="/categories/%E6%8A%98%E8%85%BE%E8%99%9A%E6%8B%9F%E6%9C%BAPVE/" class="category-chain-item">折腾虚拟机PVE</a>
   
   
 
@@ -330,7 +386,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Git/" class="print-no-link">#Git</a>
+        <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="print-no-link">#虚拟机</a>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/PVE/" class="print-no-link">#PVE</a>
       
     </div>
   
@@ -342,8 +402,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>如何用Git进行协作开发</div>
-      <div>https://blog.wingogo.top/posts/1d97ef4f47b7/</div>
+      <div>折腾虚拟机PVE系列: 04.升级PVE系统为8.x</div>
+      <div>https://blog.wingogo.top/posts/97814c8be1dd/</div>
     </div>
     <div class="license-meta">
       
@@ -355,7 +415,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年12月31日</div>
+          <div>2023年9月1日</div>
         </div>
       
       
@@ -387,9 +447,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/53f56ad8909d/" title="Git文件怎么撤销修改">
+                      <a href="/posts/0b310bb14c7e/" title="折腾虚拟机PVE系列: 05.备份虚拟机">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Git文件怎么撤销修改</span>
+                        <span class="hidden-mobile">折腾虚拟机PVE系列: 05.备份虚拟机</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -397,8 +457,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/42edb7ea6c9e/" title="安装Zookeeper">
-                        <span class="hidden-mobile">安装Zookeeper</span>
+                      <a href="/posts/c811bd6c3d8e/" title="主板开机跳线安装说明">
+                        <span class="hidden-mobile">主板开机跳线安装说明</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

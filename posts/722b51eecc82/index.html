@@ -16,28 +16,26 @@
   <meta name="author" content="夏日雪糕">
   <meta name="keywords" content="海克斯科技,wingogo">
   
-    <meta name="description" content="PVE是什么Proxmox VE（以下简称为PVE），是一个款开源虚拟化管理软件，和ESXI类似，简单的说就是用来开设和管理虚拟机的。 轻量、功能丰富和不挑硬件是PVE相比ESXi最大的优势，只后面配置虚拟机的过程中需要使用一些命令行，但是坑比EXSi少很多，总体过程轻松愉快，家用环境强烈推荐PVE。 系统要求PVE硬件方面要求最低64位CPU，内存1GB以上，附加分配给客户机所需的内存，CPU虚">
+    <meta name="description" content="下载下载地址 选择二进制包  wget 下载地址 1wget https:&#x2F;&#x2F;www.apache.org&#x2F;dyn&#x2F;closer.lua&#x2F;zookeeper&#x2F;zookeeper-3.5.9&#x2F;apache-zookeeper-3.5.9-bin.tar.gz   安装0. 准备安装12sudo yum install -y wget  vim # centossudo apt install -y">
 <meta property="og:type" content="article">
-<meta property="og:title" content="折腾PVE虚拟机系列: 01.安装PVE">
-<meta property="og:url" content="https://blog.wingogo.top/posts/ce6417da4441/index.html">
+<meta property="og:title" content="安装Zookeeper">
+<meta property="og:url" content="https://blog.wingogo.top/posts/722b51eecc82/index.html">
 <meta property="og:site_name" content="夏日雪糕">
-<meta property="og:description" content="PVE是什么Proxmox VE（以下简称为PVE），是一个款开源虚拟化管理软件，和ESXI类似，简单的说就是用来开设和管理虚拟机的。 轻量、功能丰富和不挑硬件是PVE相比ESXi最大的优势，只后面配置虚拟机的过程中需要使用一些命令行，但是坑比EXSi少很多，总体过程轻松愉快，家用环境强烈推荐PVE。 系统要求PVE硬件方面要求最低64位CPU，内存1GB以上，附加分配给客户机所需的内存，CPU虚">
+<meta property="og:description" content="下载下载地址 选择二进制包  wget 下载地址 1wget https:&#x2F;&#x2F;www.apache.org&#x2F;dyn&#x2F;closer.lua&#x2F;zookeeper&#x2F;zookeeper-3.5.9&#x2F;apache-zookeeper-3.5.9-bin.tar.gz   安装0. 准备安装12sudo yum install -y wget  vim # centossudo apt install -y">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
-<meta property="article:published_time" content="2022-12-04T11:52:00.000Z">
-<meta property="article:modified_time" content="2023-09-21T05:20:49.096Z">
+<meta property="og:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210830225713.png">
+<meta property="article:published_time" content="2021-08-30T13:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-21T05:20:49.095Z">
 <meta property="article:author" content="夏日雪糕">
-<meta property="article:tag" content="虚拟机">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="PVE">
+<meta property="article:tag" content="中间件">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg">
+<meta name="twitter:image" content="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210830225713.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>折腾PVE虚拟机系列: 01.安装PVE - 夏日雪糕</title>
+  <title>安装Zookeeper - 夏日雪糕</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,13 +201,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204200904.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210830225713.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="折腾PVE虚拟机系列: 01.安装PVE"></span>
+            <span id="subtitle" data-typed-text="安装Zookeeper"></span>
           
         </div>
 
@@ -220,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-04 19:52" pubdate>
-          2022年12月4日 晚上
+        <time datetime="2021-08-30 21:00" pubdate>
+          2021年8月30日 晚上
         </time>
       </span>
     
@@ -232,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          699 字
         
       </span>
     
@@ -243,7 +241,7 @@
         
         
         
-          12 分钟
+          6 分钟
         
       </span>
     
@@ -280,99 +278,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">折腾PVE虚拟机系列: 01.安装PVE</h1>
+            <h1 id="seo-header">安装Zookeeper</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="PVE是什么"><a href="#PVE是什么" class="headerlink" title="PVE是什么"></a>PVE是什么</h2><p><code>Proxmox VE（以下简称为PVE）</code>，是一个款开源虚拟化管理软件，和ESXI类似，简单的说就是用来开设和管理虚拟机的。</p>
-<p>轻量、功能丰富和不挑硬件是PVE相比ESXi最大的优势，只后面配置虚拟机的过程中需要使用一些命令行，但是坑比EXSi少很多，总体过程轻松愉快，家用环境强烈推荐PVE。</p>
-<h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><p>PVE硬件方面要求最低64位CPU，内存1GB以上，附加分配给客户机所需的内存，CPU虚拟化技术不是必须的，但是最好有。J3455主板加个千兆网卡跑软路由和黑群晖是够用的，内网能跑满千兆。</p>
-<ul>
-<li>CPU: 64bit (Intel EMT64 or AMD64)</li>
-<li>Intel VT/AMD-V capable CPU/Mainboard for KVM full virtualization support</li>
-<li>RAM: 1 GB RAM, plus additional RAM used for guests</li>
-</ul>
-<h2 id="PVE下载地址"><a href="#PVE下载地址" class="headerlink" title="PVE下载地址"></a>PVE下载地址</h2><p>官方网站下载地址：<a target="_blank" rel="noopener" href="https://www.proxmox.com/en/downloads/category/iso-images-pve">https://www.proxmox.com/en/downloads/category/iso-images-pve</a></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220927.png" srcset="/img/loading.gif" lazyload alt="image-20221204201301077"></p>
-<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><p>以下教程是教大家如何把PVE安装到物理机上.</p>
-<p>我喜欢用<code>Ventoy</code>,  所以以下教程是基于U盘使用Ventoy启动iso文件安装.</p>
-<h3 id="1-前提准备"><a href="#1-前提准备" class="headerlink" title="1. 前提准备"></a>1. 前提准备</h3><ul>
-<li><p>准备一个U盘  (建议不低于8G容量)</p>
-</li>
-<li><p>下载<code>Ventoy</code>: <a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/download.html">https://www.ventoy.net/cn/download.html</a></p>
-</li>
-</ul>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220934.png" srcset="/img/loading.gif" lazyload alt="image-20221204201856742"></p>
-<ul>
-<li>下载<code>微PE</code>: <a target="_blank" rel="noopener" href="https://www.wepe.com.cn/download.html">https://www.wepe.com.cn/download.html</a><br><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220938.png" srcset="/img/loading.gif" lazyload alt="image-20221204202028540"></li>
-<li>下载<code>pve.iso</code>(参考上面<strong>PVE下载地址</strong>)</li>
-</ul>
-<h3 id="2-在U盘安装Ventoy"><a href="#2-在U盘安装Ventoy" class="headerlink" title="2. 在U盘安装Ventoy"></a>2. 在U盘安装Ventoy</h3><blockquote>
-<p><strong>注意:  会格式化U盘里面的东西. 如果U盘有重要数据,请提前备份好</strong></p>
-</blockquote>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220940.png" srcset="/img/loading.gif" lazyload alt="image-20221204202738000"></p>
-<ul>
-<li><code>设备</code>选择: U盘</li>
-<li>点击<code>安装</code> </li>
-</ul>
-<h3 id="3-制作微PE-iso"><a href="#3-制作微PE-iso" class="headerlink" title="3. 制作微PE_iso"></a>3. 制作微PE_iso</h3><ul>
-<li><p>打开<code>微PE工具箱</code></p>
-</li>
-<li><p>选择<code>生成可启动ISO</code>,  生成微PE的iso文件.</p>
-</li>
-</ul>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220943.png" srcset="/img/loading.gif" lazyload alt="image-20221204203234093"></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220945.png" srcset="/img/loading.gif" lazyload alt="image-20221204203435328"></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220947.png" srcset="/img/loading.gif" lazyload alt="image-20221204203626877"></p>
-<h3 id="4-将iso文件放入U盘"><a href="#4-将iso文件放入U盘" class="headerlink" title="4. 将iso文件放入U盘"></a>4. 将iso文件放入U盘</h3><p>把<code>微PE</code>和<code>PVE</code>的iso文件放入安装Ventoy的U盘</p>
-<h3 id="5-把U盘插到工控机-设置开机读取U盘"><a href="#5-把U盘插到工控机-设置开机读取U盘" class="headerlink" title="5. 把U盘插到工控机, 设置开机读取U盘"></a>5. 把U盘插到工控机, 设置开机读取U盘</h3><p>把刚才制作好Ventoy的U盘插在工控机上.</p>
-<p>启动工控机,开机读取U盘</p>
-<p>以下图片,仅供参考.</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220949.png" srcset="/img/loading.gif" lazyload alt="image-20221204211748140"></p>
-<h3 id="6-使用微PE-格式化工控机的硬盘"><a href="#6-使用微PE-格式化工控机的硬盘" class="headerlink" title="6. 使用微PE,格式化工控机的硬盘"></a>6. 使用微PE,格式化工控机的硬盘</h3><p>进入Ventoy, 选择wepe.iso</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220952.png" srcset="/img/loading.gif" lazyload alt="image-20221204212109807"></p>
-<p>打开分区工具, 删除所有分区</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220954.png" srcset="/img/loading.gif" lazyload alt="image-20221204212655300"></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221001.png" srcset="/img/loading.gif" lazyload alt="image-20221204212911828"></p>
-<p>删除完所有分区,记得点击<code>保存更改</code></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204220956.png" srcset="/img/loading.gif" lazyload alt="image-20221204213001421"></p>
-<p>之后启动工控机</p>
-<h3 id="7-在Ventoy选择pve-iso-安装PVE"><a href="#7-在Ventoy选择pve-iso-安装PVE" class="headerlink" title="7. 在Ventoy选择pve.iso, 安装PVE"></a>7. 在Ventoy选择pve.iso, 安装PVE</h3><p>进入Ventoy界面,选择pve.iso</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221006.png" srcset="/img/loading.gif" lazyload alt="image-20221204212109807"></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221011.png" srcset="/img/loading.gif" lazyload alt="image-20221204213804110"></p>
-<h4 id="7-1-选择硬盘"><a href="#7-1-选择硬盘" class="headerlink" title="7.1 选择硬盘"></a>7.1 选择硬盘</h4><p>选择把PVE安装到那块硬盘.(我的工控机只有一块硬盘, 我这里选择默认)</p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221023.png" srcset="/img/loading.gif" lazyload alt="image-20221204213853948"></p>
-<h4 id="7-2-选择时间和地区"><a href="#7-2-选择时间和地区" class="headerlink" title="7.2 选择时间和地区"></a>7.2 选择时间和地区</h4><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221026.png" srcset="/img/loading.gif" lazyload alt="image-20221204214042494"></p>
-<h4 id="7-3-设置PVE密码"><a href="#7-3-设置PVE密码" class="headerlink" title="7.3 设置PVE密码"></a>7.3 设置PVE密码</h4><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221033.png" srcset="/img/loading.gif" lazyload alt="image-20221204214120644"></p>
-<ul>
-<li>password 密码</li>
-<li>comfirm 确认密码</li>
-<li>email 邮箱是企业服务邮箱. 但个人使用一般用不到. 所以随便填写就好<h4 id="7-4-设置网口"><a href="#7-4-设置网口" class="headerlink" title="7.4 设置网口"></a>7.4 设置网口</h4></li>
-</ul>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221036.png" srcset="/img/loading.gif" lazyload alt="image-20221204214404925"></p>
-<ul>
-<li>mangement interface: 管理网口. 默认现在工控插着网线的网口.(我的工控机只插了一个网口)</li>
-<li>Hosename: 域名. 之后可以通过域名访问pve</li>
-<li>id address: 工控机ip地址</li>
-<li>getway: 网关, (一般设置主路由ip)</li>
-<li>dns server: dns服务器 (一般设置主路由ip)</li>
-</ul>
-<h4 id="7-5-之后一路下一步-安装PVE系统"><a href="#7-5-之后一路下一步-安装PVE系统" class="headerlink" title="7.5 之后一路下一步,安装PVE系统"></a>7.5 之后一路<code>下一步</code>,安装PVE系统</h4><h4 id="7-6-安装成功"><a href="#7-6-安装成功" class="headerlink" title="7.6 安装成功"></a>7.6 安装成功</h4><p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221204221040.png" srcset="/img/loading.gif" lazyload alt="image-20221204215144157"></p>
-<h2 id="使用浏览器访问PVE"><a href="#使用浏览器访问PVE" class="headerlink" title="使用浏览器访问PVE"></a>使用浏览器访问PVE</h2><p>pve管理页面的地址格式<code>https://ip:8006/</code></p>
-<p>由于我设置pve的访问地址是192.168.50.5, 所以我访问pve地址是<a target="_blank" rel="noopener" href="https://192.168.50.5:8006/">https://192.168.50.5:8006/</a></p>
-<blockquote>
-<p>注意: 第一次打开pve地址一定要输入https开头的地址</p>
-</blockquote>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221205093445.png" srcset="/img/loading.gif" lazyload alt="image-20221205093211780"></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221205093441.png" srcset="/img/loading.gif" lazyload alt="image-20221205093236231"></p>
-<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20221205093755.png" srcset="/img/loading.gif" lazyload alt="image-20221204215812935"></p>
-<ul>
-<li><p>账号是<code>root</code></p>
-</li>
-<li><p>密码是刚才设置的<code>pve密码</code></p>
-</li>
-</ul>
+                <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a target="_blank" rel="noopener" href="http://zookeeper.apache.org/releases.html">下载地址</a></p>
+<p>选择二进制包</p>
+<p><img src="https://markdown-1301532546.cos.ap-guangzhou.myqcloud.com/markdown/20210830230525.png" srcset="/img/loading.gif" lazyload alt="image-20210830224358632"></p>
+<p>wget 下载地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://www.apache.org/dyn/closer.lua/zookeeper/zookeeper-3.5.9/apache-zookeeper-3.5.9-bin.tar.gz <br></code></pre></td></tr></table></figure>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="0-准备安装"><a href="#0-准备安装" class="headerlink" title="0. 准备安装"></a>0. 准备安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo yum install -y wget  vim <span class="hljs-comment"># centos</span><br>sudo apt install -y wget curl vim <span class="hljs-comment"># ubuntu</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-移动压缩包到-opt文件夹"><a href="#1-移动压缩包到-opt文件夹" class="headerlink" title="1. 移动压缩包到/opt文件夹"></a>1. 移动压缩包到/opt文件夹</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">mv</span> apache-zookeeper-<span class="hljs-number">3</span>.<span class="hljs-number">5</span>.<span class="hljs-number">9</span>-bin.tar.gz  /opt/<br></code></pre></td></tr></table></figure>
+<h3 id="2-解压缩安装包"><a href="#2-解压缩安装包" class="headerlink" title="2. 解压缩安装包"></a>2. 解压缩安装包</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">tar</span> -zxvf apache-zookeeper-<span class="hljs-number">3</span>.<span class="hljs-number">5</span>.<span class="hljs-number">9</span>-bin.tar.gz <br><span class="hljs-attribute">mv</span> apache-zookeeper-<span class="hljs-number">3</span>.<span class="hljs-number">5</span>.<span class="hljs-number">9</span>-bin zookeeper  # 把文件夹改名<br></code></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>把<code>config</code>文件夹的<code>zoo_sample.cfg </code>文件改名为<code>zoo.cfg </code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> /opt/zookeeper/config/zoo_sample.cfg /opt/zookeeper/config/zoo.cfg <br></code></pre></td></tr></table></figure>
+
+<p>创建<code>data</code>目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> /opt/zookeeper/data<br></code></pre></td></tr></table></figure>
+
+<p>修改配置文件<code>config/zoo.cfg</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">ticketTime=2000<br>clientPort=2181<br>dataDir=/opt/zookeeper/data<br>dataLogDir=/opt/zookeeper/logs<br></code></pre></td></tr></table></figure>
+
+<h2 id="启动服务器端"><a href="#启动服务器端" class="headerlink" title="启动服务器端"></a>启动服务器端</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/opt/zookeeper/bin/zkServer.sh start<br></code></pre></td></tr></table></figure>
+
+<h2 id="运行命令行客户端"><a href="#运行命令行客户端" class="headerlink" title="运行命令行客户端"></a>运行命令行客户端</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/opt/zookeeper/bin/zkCli.sh <br></code></pre></td></tr></table></figure>
+
+<p>zkCli执行成功后, 查看zNode输入<code>ls /</code></p>
 
                 
               </div>
@@ -391,7 +326,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%8A%98%E8%85%BE%E8%99%9A%E6%8B%9F%E6%9C%BAPVE/" class="category-chain-item">折腾虚拟机PVE</a>
+  <a href="/categories/JAVA%E5%BC%80%E5%8F%91/" class="category-chain-item">JAVA开发</a>
   
   
 
@@ -406,11 +341,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="print-no-link">#虚拟机</a>
-      
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
-      
-        <a href="/tags/PVE/" class="print-no-link">#PVE</a>
+        <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="print-no-link">#中间件</a>
       
     </div>
   
@@ -422,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>折腾PVE虚拟机系列: 01.安装PVE</div>
-      <div>https://blog.wingogo.top/posts/ce6417da4441/</div>
+      <div>安装Zookeeper</div>
+      <div>https://blog.wingogo.top/posts/722b51eecc82/</div>
     </div>
     <div class="license-meta">
       
@@ -435,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月4日</div>
+          <div>2021年8月30日</div>
         </div>
       
       
@@ -467,9 +398,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/12d21105afaa/" title="折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器">
+                      <a href="/posts/79fd9a2338aa/" title="如何用Git进行协作开发">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">折腾PVE虚拟机系列: 02.创建Ubuntu LXC容器</span>
+                        <span class="hidden-mobile">如何用Git进行协作开发</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -477,8 +408,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/1d57a4fa1ca3/" title="批量压缩图片软件Imagine">
-                        <span class="hidden-mobile">批量压缩图片软件Imagine</span>
+                      <a href="/posts/4cce6ab24f45/" title="安装终端zsh和oh-my-zsh">
+                        <span class="hidden-mobile">安装终端zsh和oh-my-zsh</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
